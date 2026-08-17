@@ -6,6 +6,7 @@
     <title>VLMY · 无畏契约精英营地</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        /* ===== 原有主页样式 ===== */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: -apple-system, "PingFang SC", "Helvetica Neue", sans-serif;
@@ -26,6 +27,7 @@
             border-radius: 48px;
             padding: 30px 24px 35px;
             box-shadow: 0 20px 60px rgba(100, 181, 246, 0.2), 0 0 0 1px rgba(255,255,255,0.5);
+            position: relative;
         }
         .header {
             display: flex;
@@ -297,6 +299,37 @@
             border: 2px solid #64b5f6;
             color: #0d3b4c;
         }
+        /* 新增游戏入口按钮 */
+        .game-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            margin: 30px 0 10px;
+            flex-wrap: wrap;
+        }
+        .game-btn {
+            background: #42a5f5;
+            border: none;
+            color: #fff;
+            padding: 14px 28px;
+            border-radius: 60px;
+            font-weight: 700;
+            font-size: 18px;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(66, 165, 245, 0.3);
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            flex: 1;
+            justify-content: center;
+            max-width: 200px;
+        }
+        .game-btn:active { transform: scale(0.94); }
+        .game-btn.reaction {
+            background: #ffa726;
+            box-shadow: 0 8px 20px rgba(255, 167, 38, 0.3);
+        }
         .footer {
             margin-top: 30px;
             text-align: center;
@@ -304,13 +337,9 @@
             color: #5a7a8a;
             border-top: 1px solid rgba(0,0,0,0.04);
             padding-top: 20px;
-            position: relative;
             cursor: pointer;
         }
-        .footer a {
-            color: #42a5f5;
-            text-decoration: none;
-        }
+        .footer a { color: #42a5f5; text-decoration: none; }
         .easter-egg {
             display: none;
             background: #fff3cd;
@@ -322,10 +351,7 @@
             text-align: center;
             font-weight: 600;
         }
-        .easter-egg.show {
-            display: block;
-            animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
+        .easter-egg.show { display: block; animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
         @keyframes popIn {
             0% { transform: scale(0.8); opacity: 0; }
             100% { transform: scale(1); opacity: 1; }
@@ -349,6 +375,104 @@
             0% { transform: translateY(-20px) rotate(0deg); opacity: 1; }
             100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
         }
+
+        /* ===== 游戏全屏面板共用样式 ===== */
+        .game-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #0d3b4c;
+            z-index: 1000;
+            touch-action: none;
+        }
+        .game-overlay.active {
+            display: block;
+        }
+        .game-exit {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255,255,255,0.2);
+            color: #fff;
+            border: none;
+            font-size: 24px;
+            padding: 10px 16px;
+            border-radius: 40px;
+            cursor: pointer;
+            z-index: 1001;
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        .game-exit:active { transform: scale(0.9); }
+        .game-score {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: #fff;
+            font-size: 28px;
+            font-weight: 700;
+            background: rgba(0,0,0,0.3);
+            padding: 8px 20px;
+            border-radius: 40px;
+            backdrop-filter: blur(4px);
+            z-index: 1001;
+        }
+
+        /* ===== 点小球游戏 ===== */
+        #ballGame .ball {
+            position: absolute;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            transition: transform 0.1s;
+            z-index: 1000;
+        }
+        #ballGame .ball:active {
+            transform: scale(0.85);
+        }
+
+        /* ===== 反应测试 ===== */
+        #reactionGame {
+            background: #1a2a3a;
+        }
+        #reactionGame .reaction-area {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            cursor: pointer;
+            user-select: none;
+            transition: background 0.1s;
+        }
+        #reactionGame .reaction-area .main-text {
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+        #reactionGame .reaction-area .sub-text {
+            font-size: 20px;
+            opacity: 0.7;
+        }
+        #reactionGame .reaction-area .stats {
+            position: absolute;
+            bottom: 40px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            font-size: 18px;
+            color: rgba(255,255,255,0.6);
+        }
+        #reactionGame .reaction-area .stats span {
+            display: inline-block;
+            margin: 0 20px;
+        }
+
         @media (max-width: 550px) {
             .container { padding: 20px 16px 30px; border-radius: 32px; }
             .hero h1 { font-size: 24px; }
@@ -357,6 +481,8 @@
             .btn { width: 100%; justify-content: center; }
             .join-area .big-number { font-size: 28px; letter-spacing: 2px; }
             .logo-text { font-size: 18px; }
+            .game-btn { max-width: 100%; }
+            #reactionGame .reaction-area .main-text { font-size: 32px; }
         }
         .toast {
             position: fixed;
@@ -379,9 +505,9 @@
     </style>
 </head>
 <body>
-    <div class="container">
+    <!-- ====== 主页容器 ====== -->
+    <div class="container" id="mainPage">
         <div class="content">
-
             <!-- 头部 -->
             <div class="header">
                 <div class="logo-area">
@@ -465,13 +591,13 @@
                 <button class="btn-fortune" onclick="showFortune()"><i class="fas fa-dice"></i> 抽运势</button>
             </div>
 
-            <!-- 隐藏彩蛋区 -->
+            <!-- 隐藏彩蛋 -->
             <div id="easterEgg" class="easter-egg">
                 🎉 恭喜你触发了隐藏彩蛋！愿你每一发都是爆头，每一局都是 MVP！ 
                 <span style="display:block;margin-top:8px;font-size:24px;">💥🔫</span>
             </div>
 
-            <!-- 加群核心（只显示一个群号） -->
+            <!-- 加群核心 -->
             <div class="join-area">
                 <div style="font-size: 15px; color: #4a6a7a; margin-bottom: 4px;"><i class="fab fa-qq"></i> QQ群号</div>
                 <div class="big-number" id="groupNumber">775985819</div>
@@ -488,7 +614,16 @@
                 </div>
             </div>
 
-            <!-- 页脚 - 点击5次触发彩蛋 -->
+            <!-- ====== 新增：游戏入口 ====== -->
+            <div style="text-align:center; margin-top: 30px; border-top: 1px solid rgba(0,0,0,0.06); padding-top: 20px;">
+                <h3 style="font-size: 18px; color: #0d3b4c; margin-bottom: 16px;"><i class="fas fa-gamepad"></i> 群友小游戏</h3>
+                <div class="game-buttons">
+                    <button class="game-btn" onclick="openGame('ball')"><i class="fas fa-circle"></i> 点小球</button>
+                    <button class="game-btn reaction" onclick="openGame('reaction')"><i class="fas fa-bolt"></i> 反应测试</button>
+                </div>
+            </div>
+
+            <!-- 页脚 -->
             <div class="footer" id="footerTrigger">
                 <p>© 2026 VLMY · 非官方爱好者社区 · 用 <a href="https://github.com" target="_blank">GitHub Pages</a> 托管</p>
                 <p style="margin-top:4px; font-size:12px; color:#8a9aa8;">点击这里 5 次有惊喜 ✨</p>
@@ -496,15 +631,35 @@
         </div>
     </div>
 
-    <!-- Toast提示 -->
+    <!-- ====== 点小球游戏面板 ====== -->
+    <div class="game-overlay" id="ballGame">
+        <button class="game-exit" onclick="closeGame('ball')"><i class="fas fa-times"></i></button>
+        <div class="game-score" id="ballScore">得分: 0</div>
+        <div id="ballContainer" style="width:100%;height:100%;position:relative;touch-action:none;"></div>
+    </div>
+
+    <!-- ====== 反应测试面板 ====== -->
+    <div class="game-overlay" id="reactionGame">
+        <button class="game-exit" onclick="closeGame('reaction')"><i class="fas fa-times"></i></button>
+        <div class="reaction-area" id="reactionArea" onclick="handleReactionClick()">
+            <div class="main-text" id="reactionMainText">点击开始</div>
+            <div class="sub-text" id="reactionSubText">等待屏幕变色后快速点击</div>
+            <div class="stats">
+                <span>🕒 上次: <strong id="lastTime">--</strong> ms</span>
+                <span>📊 平均: <strong id="avgTime">--</strong> ms</span>
+                <span>📈 次数: <strong id="attemptCount">0</strong></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast -->
     <div id="toast" class="toast">✅ 群号已复制，去QQ搜索吧！</div>
 
     <script>
-        // 群号（只改这一个地方就行）
+        // ======================== 全局变量 & 原有功能 ========================
         const QQ_GROUP = '775985819';
         document.getElementById('groupNumber').innerText = QQ_GROUP;
 
-        // 复制功能
         function copyQQ() {
             const qq = document.getElementById('groupNumber').innerText;
             if (navigator.clipboard && navigator.clipboard.writeText) {
@@ -534,10 +689,21 @@
             clearTimeout(toast._timer);
             toast._timer = setTimeout(() => {
                 toast.classList.remove('show');
+                toast.textContent = '✅ 群号已复制，去QQ搜索吧！';
             }, 2000);
         }
+        function showToastCustom(msg) {
+            const toast = document.getElementById('toast');
+            toast.textContent = msg;
+            toast.classList.add('show');
+            clearTimeout(toast._timer);
+            toast._timer = setTimeout(() => {
+                toast.classList.remove('show');
+                toast.textContent = '✅ 群号已复制，去QQ搜索吧！';
+            }, 3000);
+        }
 
-        // 互动：运势抽签（带稀有彩蛋）
+        // 运势
         const fortunes = [
             '🌟 今天手感火热，大胆对枪，MVP在向你招手！',
             '🔥 适合打狙，冷静瞄准，一发入魂！',
@@ -552,7 +718,6 @@
             const box = document.getElementById('fortuneBox');
             const idx = Math.floor(Math.random() * fortunes.length);
             let msg = fortunes[idx];
-            // 15%概率触发稀有彩蛋
             if (Math.random() < 0.15) {
                 msg = '🎊 哇！你触发了稀有运势！今天 VLMY 全员上大分！ 🎊';
             }
@@ -561,13 +726,12 @@
             setTimeout(() => { box.style.transform = 'scale(1)'; }, 200);
         }
 
-        // 彩蛋2：点击页脚5次触发星星雨 + 显示隐藏彩蛋框
+        // 彩蛋：页脚点击5次
         let clickCount = 0;
         document.getElementById('footerTrigger').addEventListener('click', function(e) {
             clickCount++;
             if (clickCount === 5) {
-                const egg = document.getElementById('easterEgg');
-                egg.classList.add('show');
+                document.getElementById('easterEgg').classList.add('show');
                 createStarRain();
                 clickCount = 0;
                 showToastCustom('🎉 彩蛋触发！星星送给你！');
@@ -580,7 +744,6 @@
             }
         });
 
-        // 星星雨效果
         function createStarRain() {
             const container = document.createElement('div');
             container.className = 'star-container';
@@ -599,20 +762,188 @@
             setTimeout(() => { container.remove(); }, 6000);
         }
 
-        function showToastCustom(msg) {
-            const toast = document.getElementById('toast');
-            toast.textContent = msg;
-            toast.classList.add('show');
-            clearTimeout(toast._timer);
-            toast._timer = setTimeout(() => {
-                toast.classList.remove('show');
-                toast.textContent = '✅ 群号已复制，去QQ搜索吧！';
-            }, 3000);
+        // ======================== 游戏通用开关 ========================
+        function openGame(type) {
+            if (type === 'ball') {
+                document.getElementById('ballGame').classList.add('active');
+                initBallGame();
+            } else if (type === 'reaction') {
+                document.getElementById('reactionGame').classList.add('active');
+                initReactionGame();
+            }
+            // 隐藏主页（可选）
+            document.getElementById('mainPage').style.display = 'none';
         }
 
-        // 控制台彩蛋（给技术宅的惊喜）
+        function closeGame(type) {
+            if (type === 'ball') {
+                document.getElementById('ballGame').classList.remove('active');
+                clearInterval(ballInterval);
+                // 清除所有小球
+                document.getElementById('ballContainer').innerHTML = '';
+            } else if (type === 'reaction') {
+                document.getElementById('reactionGame').classList.remove('active');
+                // 重置反应测试状态
+                clearTimeout(reactionTimeout);
+                reactionState = 'idle';
+                document.getElementById('reactionArea').style.background = '#1a2a3a';
+                document.getElementById('reactionMainText').textContent = '点击开始';
+                document.getElementById('reactionSubText').textContent = '等待屏幕变色后快速点击';
+            }
+            document.getElementById('mainPage').style.display = 'block';
+        }
+
+        // ======================== 点小球游戏 ========================
+        let ballScore = 0;
+        let ballInterval = null;
+        const MAX_BALLS = 8;
+        const BALL_SIZE = 40; // 固定大小，可调
+
+        function initBallGame() {
+            ballScore = 0;
+            document.getElementById('ballScore').textContent = '得分: 0';
+            const container = document.getElementById('ballContainer');
+            container.innerHTML = '';
+            // 先放几个球
+            for (let i = 0; i < MAX_BALLS; i++) {
+                createBall();
+            }
+            // 每隔1.5秒补充球（如果少于MAX_BALLS）
+            clearInterval(ballInterval);
+            ballInterval = setInterval(() => {
+                const currentBalls = container.querySelectorAll('.ball').length;
+                if (currentBalls < MAX_BALLS) {
+                    createBall();
+                }
+            }, 1500);
+        }
+
+        function createBall() {
+            const container = document.getElementById('ballContainer');
+            const ball = document.createElement('div');
+            ball.className = 'ball';
+            const size = BALL_SIZE;
+            const maxX = container.clientWidth - size;
+            const maxY = container.clientHeight - size;
+            const x = Math.random() * maxX;
+            const y = Math.random() * maxY;
+            ball.style.width = size + 'px';
+            ball.style.height = size + 'px';
+            ball.style.left = x + 'px';
+            ball.style.top = y + 'px';
+            // 随机鲜艳颜色
+            const hue = Math.floor(Math.random() * 360);
+            ball.style.background = `hsl(${hue}, 80%, 60%)`;
+            ball.style.boxShadow = `0 4px 12px hsla(${hue}, 80%, 40%, 0.4)`;
+            ball.addEventListener('click', function(e) {
+                e.stopPropagation();
+                // 加分
+                ballScore++;
+                document.getElementById('ballScore').textContent = '得分: ' + ballScore;
+                // 移除球
+                this.remove();
+                // 立即生成一个新球
+                createBall();
+            });
+            // 触摸设备支持
+            ball.addEventListener('touchstart', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                ballScore++;
+                document.getElementById('ballScore').textContent = '得分: ' + ballScore;
+                this.remove();
+                createBall();
+            });
+            container.appendChild(ball);
+        }
+
+        // ======================== 反应测试 ========================
+        let reactionState = 'idle'; // idle, waiting, ready
+        let reactionTimeout = null;
+        let startTime = 0;
+        let lastTime = 0;
+        let totalTime = 0;
+        let attemptCount = 0;
+        let avgTime = 0;
+
+        function initReactionGame() {
+            // 重置状态
+            reactionState = 'idle';
+            lastTime = 0;
+            totalTime = 0;
+            attemptCount = 0;
+            avgTime = 0;
+            document.getElementById('lastTime').textContent = '--';
+            document.getElementById('avgTime').textContent = '--';
+            document.getElementById('attemptCount').textContent = '0';
+            document.getElementById('reactionArea').style.background = '#1a2a3a';
+            document.getElementById('reactionMainText').textContent = '点击开始';
+            document.getElementById('reactionSubText').textContent = '等待屏幕变色后快速点击';
+            clearTimeout(reactionTimeout);
+        }
+
+        function handleReactionClick() {
+            const area = document.getElementById('reactionArea');
+            const mainText = document.getElementById('reactionMainText');
+            const subText = document.getElementById('reactionSubText');
+
+            if (reactionState === 'idle') {
+                // 开始测试
+                reactionState = 'waiting';
+                area.style.background = '#1a2a3a';
+                mainText.textContent = '等待...';
+                subText.textContent = '屏幕变绿时点击！';
+                // 随机延迟 1000~4000ms
+                const delay = 1000 + Math.random() * 3000;
+                reactionTimeout = setTimeout(() => {
+                    reactionState = 'ready';
+                    area.style.background = '#4caf50';
+                    mainText.textContent = '点击！';
+                    subText.textContent = '快！';
+                    startTime = performance.now();
+                }, delay);
+            } else if (reactionState === 'ready') {
+                // 正确点击
+                const endTime = performance.now();
+                const reaction = Math.round(endTime - startTime);
+                lastTime = reaction;
+                totalTime += reaction;
+                attemptCount++;
+                avgTime = Math.round(totalTime / attemptCount);
+                // 更新显示
+                document.getElementById('lastTime').textContent = lastTime;
+                document.getElementById('avgTime').textContent = avgTime;
+                document.getElementById('attemptCount').textContent = attemptCount;
+                // 回到空闲
+                reactionState = 'idle';
+                area.style.background = '#1a2a3a';
+                mainText.textContent = '点击继续';
+                subText.textContent = `上次 ${lastTime} ms · 平均 ${avgTime} ms`;
+                clearTimeout(reactionTimeout);
+            } else {
+                // waiting 状态点击 → 犯规
+                clearTimeout(reactionTimeout);
+                reactionState = 'idle';
+                area.style.background = '#f44336';
+                mainText.textContent = '太急了！';
+                subText.textContent = '等待变绿再点击，再试一次';
+                setTimeout(() => {
+                    area.style.background = '#1a2a3a';
+                    mainText.textContent = '点击开始';
+                    subText.textContent = '等待屏幕变色后快速点击';
+                }, 1000);
+            }
+        }
+
+        // 窗口大小变化时调整小球位置（简化处理）
+        window.addEventListener('resize', function() {
+            // 可以忽略，因为小球会重新生成
+        });
+
+        // 控制台彩蛋
         console.log('%c 🎯 VLMY 精英营地 %c 欢迎加入！', 'background:#42a5f5;color:#fff;font-size:16px;padding:6px;border-radius:4px;', 'background:#fff;color:#0d3b4c;padding:6px;border-radius:4px;');
         console.log('%c 彩蛋提示：点击页脚5次有惊喜！', 'color:#64b5f6;font-size:14px;');
+        console.log('%c 小游戏：点小球 & 反应测试已上线！', 'color:#ffa726;font-size:14px;');
     </script>
 </body>
 </html>
