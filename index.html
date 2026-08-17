@@ -412,6 +412,12 @@
             border-radius: 20px;
             letter-spacing: 0.5px;
         }
+        .promo-card .icon-big {
+            font-size: 36px;
+            display: block;
+            margin-bottom: 4px;
+            color: inherit;
+        }
         /* 头衔卡 */
         .promo-title {
             background: linear-gradient(135deg, #fff8e1, #ffecb3);
@@ -445,11 +451,6 @@
         .promo-ad .sub-text {
             font-size: 12px;
             color: #1a4b5e;
-        }
-        .promo-card .icon-big {
-            font-size: 32px;
-            display: block;
-            margin-bottom: 4px;
         }
         .promo-card .hot-tag {
             display: inline-block;
@@ -485,20 +486,18 @@
             color: #42a5f5;
         }
 
-        /* ===== 群规正文 ===== */
+        /* ===== 群规正文（紧凑排版） ===== */
         .rules-full {
             background: rgba(255, 255, 255, 0.45);
             border-radius: 24px;
-            padding: 20px 22px;
+            padding: 18px 20px;
             border: 1px solid rgba(255, 255, 255, 0.6);
             font-size: 15px;
             color: #1a4b5e;
-            line-height: 1.9;
-            white-space: pre-wrap;
-            word-break: break-word;
+            line-height: 1.8;
         }
         .rules-full .rule-item {
-            padding: 6px 0;
+            padding: 4px 0;
             border-bottom: 1px solid rgba(0, 0, 0, 0.04);
         }
         .rules-full .rule-item:last-child {
@@ -529,6 +528,22 @@
         .rules-full .highlight {
             color: #42a5f5;
             font-weight: 600;
+        }
+        .rules-full .seg {
+            margin-top: 6px;
+            padding-top: 6px;
+            border-top: 1px solid rgba(0, 0, 0, 0.06);
+            font-size: 14px;
+            color: #2a5a6a;
+        }
+        .rules-full .seg-final {
+            margin-top: 8px;
+            padding-top: 10px;
+            border-top: 2px solid #64b5f6;
+            font-size: 15px;
+            color: #0d3b4c;
+            font-weight: 600;
+            text-align: center;
         }
 
         /* ===== 额外公告区 ===== */
@@ -1305,7 +1320,7 @@
             }
             .rules-full {
                 font-size: 14px;
-                padding: 16px 16px;
+                padding: 14px 14px;
             }
             .meme-grid {
                 grid-template-columns: 1fr 1fr;
@@ -1456,12 +1471,12 @@
                 </div>
             </div>
 
-            <!-- ====== 🔥 商业推广卡片（突出显示） ====== -->
+            <!-- ====== 🔥 商业推广卡片（图标已修复） ====== -->
             <div class="promo-section">
                 <!-- 定制头衔 6元 -->
                 <div class="promo-card promo-title">
                     <span class="badge">✨ 热卖</span>
-                    <span class="icon-big">👑</span>
+                    <span class="icon-big"><i class="fas fa-crown"></i></span>
                     <div class="price">6 <small>元</small></div>
                     <div class="desc"><strong>定制专属群头衔</strong></div>
                     <div class="sub-text">你的个性标签，全群唯一</div>
@@ -1470,7 +1485,7 @@
                 <!-- 广告位 9.9元/周 -->
                 <div class="promo-card promo-ad">
                     <span class="badge">📢 限量</span>
-                    <span class="icon-big">📡</span>
+                    <span class="icon-big"><i class="fas fa-bullhorn"></i></span>
                     <div class="price">9.9 <small>元/周</small></div>
                     <div class="desc"><strong>群内广告位招租</strong></div>
                     <div class="sub-text">你的内容，全群可见</div>
@@ -1478,7 +1493,7 @@
                 </div>
             </div>
 
-            <!-- ====== 群规 ====== -->
+            <!-- ====== 群规（紧凑排版） ====== -->
             <div class="section-title"><i class="fas fa-shield-alt"></i> 📌 群规 · 小窝公约</div>
             <div class="rules-full">
 
@@ -1507,19 +1522,19 @@
                     </div>
                 </div>
 
-                <div style="margin-top:12px;padding-top:12px;border-top:1px solid rgba(0,0,0,0.06);font-size:14px;color:#2a5a6a;">
+                <div class="seg">
                     <p>有事找管理员或群主时，直接在群里 <span class="highlight">@群主</span> 或 <span class="highlight">@管理员</span> 即可，看到后会第一时间回复你喵～如果遇到急事也可以私聊，但群主回复可能没那么快，提前说声抱歉啦！</p>
                 </div>
 
-                <div style="margin-top:12px;padding-top:12px;border-top:1px solid rgba(0,0,0,0.06);font-size:14px;color:#2a5a6a;">
+                <div class="seg">
                     <p><span class="highlight">👑 关于管理员招募：</span>如果你热爱这个群、平时在线时间长、又愿意帮忙带带新人，欢迎随时 <span class="highlight">@群主</span> 说一声"我想当管理"，群主会认真考察的！不过名额有限，先到先得喵～</p>
                 </div>
 
-                <div style="margin-top:12px;padding-top:12px;border-top:1px solid rgba(0,0,0,0.06);font-size:14px;color:#2a5a6a;">
+                <div class="seg">
                     <p><span class="highlight">🏷️ 关于群头衔：</span>群主偶尔会搞活动送出定制头衔，到时候会在群里明确通知"本次送头衔，想要的来找我定制"。只有群主公开说明送头衔的时候，才接受定制申请，其他时候请勿私聊询问哦，群主真的会忙不过来……感谢体谅喵！🙏</p>
                 </div>
 
-                <div style="margin-top:14px;padding-top:14px;border-top:2px solid #64b5f6;font-size:15px;color:#0d3b4c;font-weight:600;text-align:center;">
+                <div class="seg-final">
                     🎉 最后最后：希望大家多多活跃，多拉自己的开黑搭子进来！<br>
                     人多了内战才好组，车队才好摇！群是大家的，一起养大才有意思～<br>
                     有什么好建议也随时甩过来，群主看到一定认真研究。<br>
@@ -1619,7 +1634,7 @@
                 </div>
             </div>
 
-            <!-- ====== 🎮 游戏入口（三列：反应测试 + 2048 + 扫雷） ====== -->
+            <!-- ====== 🎮 游戏入口（三列） ====== -->
             <div class="game-section">
                 <div class="game-title"><i class="fas fa-gamepad"></i> 群友小游戏 · 三连玩</div>
                 <div class="game-grid">
@@ -1944,7 +1959,6 @@
             addRandomTile();
             addRandomTile();
             render2048();
-            // 键盘事件
             document.addEventListener('keydown', handleKey2048);
         }
 
@@ -2011,7 +2025,6 @@
             }
         }
 
-        // 滑动逻辑（简化版）
         function slideRow(row) {
             let arr = row.filter(v => v !== 0);
             let newArr = [];
@@ -2104,7 +2117,6 @@
             return true;
         }
 
-        // 触摸支持 2048（简单滑动）
         let touchStartX = 0,
             touchStartY = 0;
         document.addEventListener('touchstart', function(e) {
@@ -2176,11 +2188,10 @@
                 const r = Math.floor(Math.random() * msRows);
                 const c = Math.floor(Math.random() * msCols);
                 if (msBoard[r][c] === -1) continue;
-                    if (Math.abs(r - excludeR) <= 1 && Math.abs(c - excludeC) <= 1) continue;
+                if (Math.abs(r - excludeR) <= 1 && Math.abs(c - excludeC) <= 1) continue;
                 msBoard[r][c] = -1;
                 placed++;
             }
-            // 计算数字
             for (let r = 0; r < msRows; r++) {
                 for (let c = 0; c < msCols; c++) {
                     if (msBoard[r][c] === -1) continue;
@@ -2245,7 +2256,6 @@
                         renderMinesweeper();
                         updateFlagCount();
                     });
-                    // 长按标旗（移动端）
                     let longPressTimer = null;
                     cell.addEventListener('touchstart', function(e) {
                         longPressTimer = setTimeout(() => {
@@ -2289,11 +2299,9 @@
                 msFirstClick = false;
             }
             if (msBoard[r][c] === -1) {
-                // 踩雷
                 msRevealed[r][c] = true;
                 msGameOver = true;
                 renderMinesweeper();
-                // 显示所有雷
                 for (let rr = 0; rr < msRows; rr++) {
                     for (let cc = 0; cc < msCols; cc++) {
                         if (msBoard[rr][cc] === -1 && !msRevealed[rr][cc]) {
@@ -2305,7 +2313,6 @@
                 showToastCustom('💥 踩雷了！游戏结束');
                 return;
             }
-            // 展开
             msRevealed[r][c] = true;
             if (msBoard[r][c] === 0) {
                 for (let dr = -1; dr <= 1; dr++) {
@@ -2319,7 +2326,6 @@
                 }
             }
             renderMinesweeper();
-            // 检查胜利
             checkWin();
         }
 
