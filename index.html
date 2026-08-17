@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>无畏契约 · 精英玩家群</title>
+    <!-- 使用免费图标库 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* ========== 全局重置 & 基础 ========== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, "PingFang SC", "Helvetica Neue", sans-serif;
+            background: #0b0e14;
+            color: #ece8e1;
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* 主容器 — 像一张精致的“战术卡片” */
+        .container {
+            max-width: 720px;
+            width: 100%;
+            background: rgba(18, 24, 34, 0.85);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 70, 85, 0.3);
+            border-radius: 36px;
+            padding: 30px 25px 40px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* 装饰光晕 — 无畏契约红 */
+        .container::before {
+            content: '';
+            position: absolute;
+            top: -80px;
+            right: -80px;
+            width: 250px;
+            height: 250px;
+            background: radial-gradient(circle, rgba(255, 70, 85, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: 0;
+        }
+
+        /* 所有内容放在上层 */
+        .content {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ========== 头部 ========== */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            font-size: 28px;
+            color: #ff4655;
+            background: rgba(255, 70, 85, 0.15);
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 14px;
+            border: 1px solid rgba(255, 70, 85, 0.3);
+        }
+
+        .logo-text {
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        .logo-text span {
+            color: #ff4655;
+        }
+
+        .status-badge {
+            font-size: 11px;
+            background: #ff4655;
+            color: #fff;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.8; transform: scale(0.95); }
+            50% { opacity: 1; transform: scale(1.05); }
+            100% { opacity: 0.8; transform: scale(0.95); }
+        }
+
+        /* ========== 主标题 ========== */
+        .hero {
+            margin: 15px 0 25px;
+        }
+
+        .hero h1 {
+            font-size: 32px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #ffffff 0%, #ffb3b3 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
+        }
+
+        .hero .sub {
+            font-size: 16px;
+            color: #9aa3b5;
+            margin-top: 6px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .hero .sub i {
+            color: #ff4655;
+            width: 20px;
+        }
+
+        /* ========== 信息卡片 ========== */
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin: 25px 0;
+        }
+
+        .info-card {
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: 18px;
+            padding: 16px 14px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            transition: 0.2s;
+        }
+        .info-card:hover {
+            background: rgba(255, 70, 85, 0.08);
+            border-color: rgba(255, 70, 85, 0.2);
+        }
+
+        .info-card .label {
+            font-size: 12px;
+            color: #7a8499;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+        .info-card .value {
+            font-size: 18px;
+            font-weight: 700;
+            margin-top: 4px;
+            color: #fff;
+        }
+        .info-card .value i {
+            color: #ff4655;
+            margin-right: 6px;
+        }
+
+        /* ========== 群规列表 ========== */
+        .section-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin: 30px 0 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .section-title i {
+            color: #ff4655;
+            font-size: 22px;
+        }
+
+        .rules-list {
+            list-style: none;
+            background: rgba(0, 0, 0, 0.25);
+            border-radius: 20px;
+            padding: 8px 6px;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        .rules-list li {
+            padding: 14px 16px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            font-size: 15px;
+            color: #d1d7e3;
+        }
+        .rules-list li:last-child {
+            border-bottom: none;
+        }
+
+        .rules-list li .num {
+            background: #ff4655;
+            color: #fff;
+            font-weight: 800;
+            font-size: 12px;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        /* ========== 加群区域 (重点) ========== */
+        .join-area {
+            margin-top: 35px;
+            background: linear-gradient(145deg, rgba(255, 70, 85, 0.10), rgba(255, 70, 85, 0.02));
+            border-radius: 28px;
+            padding: 28px 22px;
+            border: 1px solid rgba(255, 70, 85, 0.25);
+            text-align: center;
+        }
+
+        .join-area .big-number {
+            font-size: 38px;
+            font-weight: 900;
+            letter-spacing: 4px;
+            color: #fff;
+            background: rgba(0,0,0,0.3);
+            padding: 10px 20px;
+            border-radius: 16px;
+            display: inline-block;
+            margin: 10px 0 16px;
+            font-family: 'Courier New', monospace;
+            border: 1px dashed rgba(255,70,85,0.4);
+        }
+
+        .btn-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 32px;
+            border-radius: 60px;
+            font-weight: 700;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+            background: #2a323f;
+            color: #fff;
+            box-shadow: 0 4px 6px -2px rgba(0,0,0,0.3);
+        }
+        .btn:active {
+            transform: scale(0.95);
+        }
+
+        .btn-primary {
+            background: #ff4655;
+            color: #fff;
+            box-shadow: 0 8px 20px -6px rgba(255, 70, 85, 0.4);
+        }
+        .btn-primary:active {
+            background: #e63a48;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid rgba(255,255,255,0.15);
+        }
+
+        /* ========== 二维码占位 ========== */
+        .qr-placeholder {
+            margin: 25px auto 0;
+            width: 140px;
+            height: 140px;
+            background: repeating-linear-gradient(45deg, #1e2632, #1e2632 8px, #28303e 8px, #28303e 16px);
+            border-radius: 18px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: 2px dashed rgba(255,255,255,0.1);
+            color: #6b768b;
+            font-size: 13px;
+            gap: 6px;
+        }
+        .qr-placeholder i {
+            font-size: 36px;
+            color: #ff4655;
+            opacity: 0.6;
+        }
+
+        /* ========== 页脚 ========== */
+        .footer {
+            margin-top: 35px;
+            text-align: center;
+            font-size: 13px;
+            color: #4a5366;
+            border-top: 1px solid rgba(255,255,255,0.04);
+            padding-top: 22px;
+        }
+        .footer a {
+            color: #7a8499;
+            text-decoration: none;
+        }
+
+        /* ========== 响应式 ========== */
+        @media (max-width: 500px) {
+            body { padding: 12px; }
+            .container { padding: 20px 16px 30px; border-radius: 28px; }
+            .hero h1 { font-size: 26px; }
+            .info-grid { grid-template-columns: 1fr; }
+            .btn { width: 100%; justify-content: center; }
+            .join-area .big-number { font-size: 28px; letter-spacing: 2px; }
+            .logo-text { font-size: 17px; }
+            .status-badge { font-size: 10px; padding: 3px 10px; }
+        }
+
+        /* 复制成功提示 */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #1e2632;
+            color: #fff;
+            padding: 12px 28px;
+            border-radius: 60px;
+            font-weight: 600;
+            border: 1px solid #ff4655;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+            z-index: 999;
+        }
+        .toast.show {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+
+            <!-- 头部 -->
+            <div class="header">
+                <div class="logo-area">
+                    <div class="logo-icon"><i class="fas fa-crosshairs"></i></div>
+                    <div class="logo-text">VCT<span>·</span>CN</div>
+                </div>
+                <div class="status-badge"><i class="fas fa-circle" style="font-size: 8px; margin-right: 6px; vertical-align: middle;"></i> 招募中</div>
+            </div>
+
+            <!-- 主标题 -->
+            <div class="hero">
+                <h1>无畏契约 GG俱乐部 游戏交流</h1>
+                <div class="sub">
+                    <span><i class="fas fa-users"></i> 多人活跃群</span>
+                    <span><i class="fas fa-gamepad"></i> 排位 / 死斗 / 自定义</span>
+                </div>
+            </div>
+
+            <!-- 信息网格 -->
+            <div class="info-grid">
+                <div class="info-card">
+                    <div class="label"><i class="fas fa-tag"></i> 群名称</div>
+                    <div class="value">VCT 冲锋营地</div>
+                </div>
+                <div class="info-card">
+                    <div class="label"><i class="fas fa-user-plus"></i> 入群方式</div>
+                    <div class="value"><i class="fas fa-check-circle" style="color: #4ade80;"></i> 审核制</div>
+                </div>
+            </div>
+
+            <!-- 群规 -->
+            <div class="section-title">
+                <i class="fas fa-shield-halved"></i> 入群须知
+            </div>
+            <ul class="rules-list">
+                <li><span class="num">1</span> 活跃玩家，拒绝长期潜水，每周至少组队 2 次</li>
+                <li><span class="num">2</span> 段位要求：黄金及以上，心态好不压力队友</li>
+                <li><span class="num">3</span> 禁止广告、政治、色情，文明交流</li>
+                <li><span class="num">4</span> 进群请修改名片：游戏ID + 主打英雄</li>
+            </ul>
+
+            <!-- 加群核心区域 -->
+            <div class="join-area">
+                <div style="font-size: 14px; color: #9aa3b5;"><i class="fas fa-qq"></i> QQ 群号</div>
+                <!-- ★★★ 重要：把下面的 123456789 换成你的真实QQ群号 ★★★ -->
+                <div class="big-number" id="groupNumber">775985819</div>
+
+                <div class="btn-group">
+                    <button class="btn btn-primary" onclick="copyQQ()">
+                        <i class="fas fa-copy"></i> 复制群号
+                    </button>
+                    <a class="btn btn-outline" href="点击链接加入群聊【无畏契约手游 GG车队 游戏交流】：https://qun.qq.com/universal-share/share?ac=1&authKey=TS5G1ZE39%2B9KvfgxbnPCr4KuoXNN1gwPdiLDZnPcTf6M4NePQyCB3raqavUGEXqd&busi_data=eyJncm91cENvZGUiOiI3NzU5ODU4MTkiLCJ0b2tlbiI6IjZtTFd2TTIvbk9pY2dSZmdhNFhyYWptUFpsMDA0QUpmdTF2THZBVlgzZDZ1VGkzNE5CblJzUFl2RzJ1cmdTMUwiLCJ1aW4iOiIzNjk2NzA0OTU3In0%3D&data=A-uCyfx4vzsK3OM7sRidqkWzto39k1rSakLmJ5YO48hCNYsF2YPMVKMxJSHgyXjeKGeay0aEsg8Rkx6COVCCpg&svctype=4&tempid=h5_group_info" target="_blank">
+                        <i class="fas fa-arrow-right"></i> 直达加群
+                    </a>
+                </div>
+
+                <!-- 群二维码占位（你可以替换成真实二维码图片） -->
+                <div class="qr-placeholder">
+                    <i class="fas fa-qrcode"></i>
+                    <span>放置群二维码</span>
+                    <span style="font-size: 10px;">(替换图片即可)</span>
+                </div>
+                <div style="margin-top: 10px; font-size: 12px; color: #5a647a;">
+                    <i class="fas fa-rotate-right"></i> 二维码每周更新，请以群内公告为准
+                </div>
+            </div>
+
+            <!-- 页脚 -->
+            <div class="footer">
+                <p>© 2026 VCT-CN · 非官方爱好者社区</p>
+                <p style="margin-top: 4px;">
+                    <i class="fas fa-code"></i> 用 <a href="https://github.com" target="_blank">GitHub Pages</a> 免费托管
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- 复制提示浮层 -->
+    <div id="toast" class="toast">✅ 群号已复制，快去QQ搜索吧！</div>
+
+    <script>
+        // ===== 配置区：只需改这一个地方 =====
+        const QQ_GROUP = '775985819';   // 改成你的QQ群号
+        // ====================================
+
+        // 页面加载时，把群号显示到页面和复制剪贴板变量中
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('groupNumber').innerText = QQ_GROUP;
+            
+            // 同时更新“直达加群”链接（如果你有官方的加群链接，请替换下面的URL）
+            // 格式：https://qm.qq.com/cgi-bin/qm/qr?k=你的key
+            // 如果你没有，可以删掉这个a标签，或者保持原样
+        });
+
+        // 复制功能
+        function copyQQ() {
+            const qq = document.getElementById('groupNumber').innerText;
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(qq).then(() => {
+                    showToast();
+                }).catch(() => {
+                    // 降级方案
+                    fallbackCopy(qq);
+                });
+            } else {
+                fallbackCopy(qq);
+            }
+        }
+
+        // 降级复制（兼容老浏览器）
+        function fallbackCopy(text) {
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            textarea.style.position = 'fixed';
+            textarea.style.opacity = '0';
+            document.body.appendChild(textarea);
+            textarea.select();
+            try {
+                document.execCommand('copy');
+                showToast();
+            } catch (err) {
+                alert('复制失败，请手动复制群号：' + text);
+            }
+            document.body.removeChild(textarea);
+        }
+
+        // 显示提示
+        function showToast() {
+            const toast = document.getElementById('toast');
+            toast.classList.add('show');
+            clearTimeout(toast._timer);
+            toast._timer = setTimeout(() => {
+                toast.classList.remove('show');
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
