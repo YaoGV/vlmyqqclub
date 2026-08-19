@@ -37,6 +37,208 @@
             z-index: 2;
         }
 
+        /* ===== 七夕弹窗 ===== */
+        .qixi-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            z-index: 9998;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .qixi-overlay.active {
+            display: flex;
+        }
+        .qixi-modal {
+            background: linear-gradient(145deg, #fff5f7, #fce4ec);
+            max-width: 440px;
+            width: 100%;
+            border-radius: 40px;
+            padding: 36px 28px 30px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 30px 80px rgba(233, 30, 99, 0.3);
+            border: 2px solid rgba(233, 30, 99, 0.15);
+            animation: qixiPop 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        @keyframes qixiPop {
+            0% {
+                transform: scale(0.7) rotate(-3deg);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1) rotate(0deg);
+                opacity: 1;
+            }
+        }
+        .qixi-modal .close-btn {
+            position: absolute;
+            top: 12px;
+            right: 16px;
+            font-size: 24px;
+            color: #c62828;
+            cursor: pointer;
+            opacity: 0.5;
+            transition: opacity 0.2s;
+            background: none;
+            border: none;
+            padding: 4px 8px;
+        }
+        .qixi-modal .close-btn:hover {
+            opacity: 1;
+        }
+        .qixi-modal .heart-icon {
+            font-size: 56px;
+            color: #e91e63;
+            animation: heartBeat 1.2s ease-in-out infinite;
+            display: inline-block;
+        }
+        @keyframes heartBeat {
+            0%,
+            100% {
+                transform: scale(1);
+            }
+            14% {
+                transform: scale(1.2);
+            }
+            28% {
+                transform: scale(1);
+            }
+            42% {
+                transform: scale(1.15);
+            }
+            70% {
+                transform: scale(1);
+            }
+        }
+        .qixi-modal .title {
+            font-size: 26px;
+            font-weight: 800;
+            color: #880e4f;
+            margin: 8px 0 6px;
+            letter-spacing: 1px;
+        }
+        .qixi-modal .sub-title {
+            font-size: 15px;
+            color: #ad1457;
+            font-weight: 600;
+            margin-bottom: 12px;
+            background: rgba(233, 30, 99, 0.08);
+            padding: 6px 16px;
+            border-radius: 30px;
+            display: inline-block;
+        }
+        .qixi-modal .body-text {
+            font-size: 16px;
+            color: #4a1a2a;
+            line-height: 1.8;
+            margin: 12px 0 16px;
+        }
+        .qixi-modal .body-text .highlight-pink {
+            color: #e91e63;
+            font-weight: 700;
+        }
+        .qixi-modal .body-text .code-box {
+            display: inline-block;
+            background: rgba(0, 0, 0, 0.06);
+            padding: 2px 14px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-weight: 700;
+            font-size: 18px;
+            color: #880e4f;
+            letter-spacing: 2px;
+            border: 1px dashed rgba(233, 30, 99, 0.3);
+            margin: 4px 0;
+        }
+        .qixi-modal .date-tag {
+            display: inline-block;
+            background: #e91e63;
+            color: #fff;
+            padding: 4px 18px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 700;
+            margin-top: 6px;
+        }
+        .qixi-modal .btn-got-it {
+            background: linear-gradient(135deg, #e91e63, #ad1457);
+            border: none;
+            color: #fff;
+            padding: 14px 44px;
+            border-radius: 60px;
+            font-weight: 700;
+            font-size: 18px;
+            cursor: pointer;
+            margin-top: 16px;
+            transition: all 0.2s;
+            box-shadow: 0 8px 24px rgba(233, 30, 99, 0.3);
+        }
+        .qixi-modal .btn-got-it:active {
+            transform: scale(0.94);
+        }
+        .qixi-modal .floating-hearts {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            border-radius: 40px;
+        }
+        .qixi-modal .floating-hearts span {
+            position: absolute;
+            font-size: 20px;
+            animation: floatHeart 6s linear infinite;
+            opacity: 0.3;
+        }
+        .qixi-modal .floating-hearts span:nth-child(1) {
+            left: 10%;
+            animation-delay: 0s;
+            font-size: 18px;
+        }
+        .qixi-modal .floating-hearts span:nth-child(2) {
+            left: 30%;
+            animation-delay: 1.5s;
+            font-size: 24px;
+        }
+        .qixi-modal .floating-hearts span:nth-child(3) {
+            left: 55%;
+            animation-delay: 3s;
+            font-size: 16px;
+        }
+        .qixi-modal .floating-hearts span:nth-child(4) {
+            left: 75%;
+            animation-delay: 0.8s;
+            font-size: 22px;
+        }
+        .qixi-modal .floating-hearts span:nth-child(5) {
+            left: 90%;
+            animation-delay: 2.2s;
+            font-size: 14px;
+        }
+        @keyframes floatHeart {
+            0% {
+                transform: translateY(100%) rotate(0deg);
+                opacity: 0.2;
+            }
+            50% {
+                opacity: 0.5;
+            }
+            100% {
+                transform: translateY(-100%) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
         /* ===== 彩蛋云朵 ===== */
         .cloud-egg {
             position: fixed;
@@ -370,7 +572,7 @@
             margin-right: 6px;
         }
 
-        /* ===== 商业推广卡片（突出） ===== */
+        /* ===== 商业推广卡片 ===== */
         .promo-section {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -418,7 +620,6 @@
             margin-bottom: 4px;
             color: inherit;
         }
-        /* 头衔卡 */
         .promo-title {
             background: linear-gradient(135deg, #fff8e1, #ffecb3);
             border: 2px solid #ffd54f;
@@ -435,7 +636,6 @@
             font-size: 12px;
             color: #795548;
         }
-        /* 广告位卡 */
         .promo-ad {
             background: linear-gradient(135deg, #e3f2fd, #90caf9);
             border: 2px solid #42a5f5;
@@ -486,7 +686,7 @@
             color: #42a5f5;
         }
 
-        /* ===== 群规正文（紧凑排版） ===== */
+        /* ===== 群规正文 ===== */
         .rules-full {
             background: rgba(255, 255, 255, 0.45);
             border-radius: 24px;
@@ -840,7 +1040,7 @@
             color: #0d3b4c;
         }
 
-        /* ===== 游戏入口（三列） ===== */
+        /* ===== 游戏入口 ===== */
         .game-section {
             margin: 20px 0 6px;
             border-top: 1px solid rgba(0, 0, 0, 0.06);
@@ -966,7 +1166,7 @@
             opacity: 1;
         }
 
-        /* ===== 游戏全屏面板（通用） ===== */
+        /* ===== 游戏全屏面板 ===== */
         .game-overlay {
             display: none;
             position: fixed;
@@ -1060,7 +1260,7 @@
             }
         }
 
-        /* ===== 2048 游戏 ===== */
+        /* ===== 2048 ===== */
         #game2048 .board-wrap {
             display: flex;
             flex-direction: column;
@@ -1357,6 +1557,12 @@
             #minesweeper .ms-cell {
                 font-size: 16px;
             }
+            .qixi-modal {
+                padding: 28px 20px 24px;
+            }
+            .qixi-modal .title {
+                font-size: 22px;
+            }
         }
         @media (max-width: 400px) {
             .meme-grid {
@@ -1378,6 +1584,35 @@
     </style>
 </head>
 <body>
+
+    <!-- ====== 七夕弹窗 ====== -->
+    <div class="qixi-overlay" id="qixiOverlay">
+        <div class="qixi-modal">
+            <button class="close-btn" onclick="closeQixi()"><i class="fas fa-times"></i></button>
+            <div class="floating-hearts">
+                <span>❤️</span>
+                <span>💕</span>
+                <span>❤️</span>
+                <span>💗</span>
+                <span>❤️</span>
+            </div>
+            <div class="heart-icon">💖</div>
+            <div class="title">迟来的七夕节礼物</div>
+            <div class="sub-title">🎁 群主搞忘了 · 现在补上！</div>
+            <div class="body-text">
+                群主七夕那天忙着赶作业，把礼物给忘了喵～<br>
+                现在补上！<br><br>
+                <span class="highlight-pink">⏰ 8月19日 - 8月20日</span><br>
+                在群里 <span class="highlight-pink">@群主</span> 发送<br>
+                <span class="code-box">surhrkc</span><br>
+                <span style="font-size:20px;display:block;margin:6px 0;">👇</span>
+                即可 <span class="highlight-pink" style="font-size:20px;">免费领取</span><br>
+                <span style="font-size:22px;font-weight:800;color:#880e4f;">💕 七夕限定群头衔 💕</span>
+            </div>
+            <div class="date-tag">📅 2026.8.19 - 8.20</div>
+            <button class="btn-got-it" onclick="closeQixi()">知道啦！❤️</button>
+        </div>
+    </div>
 
     <!-- ====== 彩蛋云朵 ====== -->
     <div class="cloud-egg" id="cloudEgg" onclick="handleCloudClick()">
@@ -1471,9 +1706,8 @@
                 </div>
             </div>
 
-            <!-- ====== 🔥 商业推广卡片（图标已修复） ====== -->
+            <!-- ====== 商业推广卡片 ====== -->
             <div class="promo-section">
-                <!-- 定制头衔 6元 -->
                 <div class="promo-card promo-title">
                     <span class="badge">✨ 热卖</span>
                     <span class="icon-big"><i class="fas fa-crown"></i></span>
@@ -1482,7 +1716,6 @@
                     <div class="sub-text">你的个性标签，全群唯一</div>
                     <div style="margin-top:8px;"><span class="hot-tag">🔥 找群主定制</span></div>
                 </div>
-                <!-- 广告位 9.9元/周 -->
                 <div class="promo-card promo-ad">
                     <span class="badge">📢 限量</span>
                     <span class="icon-big"><i class="fas fa-bullhorn"></i></span>
@@ -1493,7 +1726,7 @@
                 </div>
             </div>
 
-            <!-- ====== 群规（紧凑排版） ====== -->
+            <!-- ====== 群规 ====== -->
             <div class="section-title"><i class="fas fa-shield-alt"></i> 📌 群规 · 小窝公约</div>
             <div class="rules-full">
 
@@ -1634,7 +1867,7 @@
                 </div>
             </div>
 
-            <!-- ====== 🎮 游戏入口（三列） ====== -->
+            <!-- ====== 游戏入口 ====== -->
             <div class="game-section">
                 <div class="game-title"><i class="fas fa-gamepad"></i> 群友小游戏 · 三连玩</div>
                 <div class="game-grid">
@@ -1714,6 +1947,30 @@
     <div id="toast" class="toast">✅ 群号已复制，去QQ搜索吧！</div>
 
     <script>
+        // ======================== 七夕弹窗逻辑 ========================
+        function showQixiPopup() {
+            const today = new Date();
+            const month = today.getMonth() + 1;
+            const day = today.getDate();
+            // 活动时间：8月19日 - 8月20日
+            if (month === 8 && day >= 19 && day <= 20) {
+                // 检查今天是否已经关闭过
+                const closedToday = localStorage.getItem('qixi_closed_' + today.toDateString());
+                if (!closedToday) {
+                    setTimeout(() => {
+                        document.getElementById('qixiOverlay').classList.add('active');
+                    }, 500);
+                }
+            }
+        }
+
+        function closeQixi() {
+            document.getElementById('qixiOverlay').classList.remove('active');
+            // 记录今天已关闭
+            const today = new Date();
+            localStorage.setItem('qixi_closed_' + today.toDateString(), 'true');
+        }
+
         // ======================== 核心配置 ========================
         const QQ_GROUP = '775985819';
         document.getElementById('groupNumber').innerText = QQ_GROUP;
@@ -1945,7 +2202,7 @@
             }
         }
 
-        // ======================== 2048 游戏 ========================
+        // ======================== 2048 ========================
         let board2048 = [];
         let score2048 = 0;
         let gameOver2048 = false;
@@ -2436,10 +2693,13 @@
         // ======================== 初始化 ========================
         document.addEventListener('DOMContentLoaded', function() {
             initLeanCloud();
+            // 显示七夕弹窗（活动时间内）
+            showQixiPopup();
         });
 
         // 控制台彩蛋
-        console.log('%c 🚗 GG车队 %c 无畏契约手游 · 三游戏已上线！', 'background:#42a5f5;color:#fff;font-size:18px;padding:8px;border-radius:4px;', 'background:#fff;color:#0d3b4c;padding:8px;border-radius:4px;');
+        console.log('%c 🚗 GG车队 %c 七夕限定头衔活动已上线！', 'background:#e91e63;color:#fff;font-size:18px;padding:8px;border-radius:4px;', 'background:#fff;color:#e91e63;padding:8px;border-radius:4px;');
+        console.log('%c 💕 8.19-8.20 @群主 surhrkc 免费领七夕头衔！', 'color:#ad1457;font-size:14px;font-weight:700;');
         console.log('%c ☁️ 点击云朵5次→云原神 | 页脚5次→彩蛋', 'color:#64b5f6;font-size:14px;');
         console.log('%c 🎮 2048 + 扫雷 + 反应测试 已就绪！', 'color:#ffa726;font-size:14px;');
         console.log('%c 👑 定制头衔6元 | 📢 广告位9.9元/周', 'color:#f57f17;font-size:14px;');
