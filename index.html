@@ -2,1332 +2,728 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#1a73e8">
+    <meta name="description" content="GG车队｜无畏契约手游游戏交流群，开黑、整活、一起上分。">
     <title>GG车队 · 无畏契约手游交流群</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: -apple-system, "PingFang SC", "Helvetica Neue", "Roboto", sans-serif;
+            font-family:
+                -apple-system,
+                BlinkMacSystemFont,
+                "PingFang SC",
+                "Microsoft YaHei",
+                "Helvetica Neue",
+                Roboto,
+                Arial,
+                sans-serif;
             background: #f5f7fa;
             color: #1a2332;
-            padding: 0;
             min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            padding-top: 0;
+            overflow-x: hidden;
+            -webkit-tap-highlight-color: transparent;
         }
 
-        /* ===== 主容器：直角卡片 ===== */
+        button,
+        input,
+        textarea {
+            font: inherit;
+        }
+
+        button {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        ::selection {
+            background: #1a73e8;
+            color: #fff;
+        }
+
+        /* =========================
+           主容器
+        ========================= */
+
         .container {
-            max-width: 640px;
             width: 100%;
-            background: #ffffff;
-            border-radius: 0;
-            padding: 20px 18px 30px;
-            box-shadow: none;
-            position: relative;
-            z-index: 2;
+            max-width: 640px;
             min-height: 100vh;
+            margin: 0 auto;
+            padding:
+                max(12px, env(safe-area-inset-top))
+                18px
+                max(30px, env(safe-area-inset-bottom));
+            background: #fff;
         }
 
-        /* ===== 顶部状态栏模拟 ===== */
+        .content {
+            width: 100%;
+        }
+
+        /* =========================
+           状态栏
+        ========================= */
+
         .status-bar {
             display: flex;
             justify-content: space-between;
-            padding: 4px 0 12px 0;
-            font-size: 12px;
-            color: #5f6b7a;
-            font-weight: 500;
+            align-items: center;
+            padding: 4px 0 12px;
             border-bottom: 1px solid #eef1f4;
+            color: #5f6b7a;
+            font-size: 12px;
+            font-weight: 500;
         }
 
-        /* ===== 头部 ===== */
+        /* =========================
+           Header
+        ========================= */
+
         .header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 16px 0 12px 0;
-            flex-wrap: wrap;
-            gap: 8px;
+            gap: 12px;
+            padding: 16px 0 12px;
         }
+
         .logo-area {
             display: flex;
             align-items: center;
             gap: 10px;
+            min-width: 0;
         }
+
         .logo-icon {
-            background: #1a73e8;
-            color: white;
             width: 44px;
             height: 44px;
-            border-radius: 8px;
+            flex: 0 0 44px;
             display: flex;
             align-items: center;
             justify-content: center;
+            background: #1a73e8;
+            color: #fff;
+            border-radius: 8px;
             font-size: 20px;
-            flex-shrink: 0;
-        }
-        .logo-text {
-            font-size: 18px;
-            font-weight: 700;
-            color: #1a2332;
-            line-height: 1.2;
-        }
-        .logo-text span {
-            color: #1a73e8;
-        }
-        .logo-text .sub {
-            font-size: 12px;
-            font-weight: 400;
-            color: #5f6b7a;
-            display: block;
-        }
-        .status-badge {
-            background: #e8f0fe;
-            color: #1a73e8;
-            padding: 4px 14px;
-            border-radius: 6px;
-            font-size: 12px;
-            font-weight: 600;
-            flex-shrink: 0;
         }
 
-        /* ===== 群主寄语 ===== */
+        .logo-text {
+            min-width: 0;
+            font-size: 18px;
+            font-weight: 700;
+            line-height: 1.2;
+            color: #1a2332;
+        }
+
+        .logo-text .sub {
+            display: block;
+            margin-top: 3px;
+            color: #5f6b7a;
+            font-size: 12px;
+            font-weight: 400;
+        }
+
+        .status-badge {
+            flex-shrink: 0;
+            padding: 5px 12px;
+            border-radius: 6px;
+            background: #e8f0fe;
+            color: #1a73e8;
+            font-size: 12px;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        /* =========================
+           群主寄语
+        ========================= */
+
         .owner-message {
-            background: #f8faff;
-            border-radius: 0;
-            padding: 18px 18px;
             margin: 8px 0 16px;
+            padding: 18px;
+            background: #f8faff;
             border-left: 4px solid #1a73e8;
         }
+
         .owner-message .label {
-            font-size: 12px;
-            font-weight: 700;
-            color: #1a73e8;
             display: flex;
             align-items: center;
             gap: 6px;
             margin-bottom: 6px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        .owner-message p {
-            font-size: 14px;
-            color: #2c3a4a;
-            line-height: 1.7;
-            margin-bottom: 4px;
-        }
-        .owner-message .sign {
-            text-align: right;
+            color: #1a73e8;
             font-size: 12px;
-            color: #5f6b7a;
-            margin-top: 4px;
+            font-weight: 700;
+            letter-spacing: .5px;
         }
 
-        /* ===== 横幅 ===== */
+        .owner-message p {
+            margin-bottom: 4px;
+            color: #2c3a4a;
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        .owner-message .sign {
+            margin-top: 6px;
+            color: #5f6b7a;
+            font-size: 12px;
+            text-align: right;
+        }
+
+        /* =========================
+           Hero
+        ========================= */
+
         .hero {
-            background: linear-gradient(135deg, #e8f0fe, #d2e3fc);
-            border-radius: 0;
-            padding: 22px 20px;
             margin: 8px 0 18px;
+            padding: 24px 20px;
+            background: linear-gradient(135deg, #e8f0fe, #d2e3fc);
             text-align: center;
         }
+
         .hero h1 {
+            color: #1a2332;
             font-size: 24px;
             font-weight: 700;
-            color: #1a2332;
-            letter-spacing: -0.3px;
+            letter-spacing: -.3px;
         }
+
         .hero p {
-            font-size: 14px;
+            margin-top: 5px;
             color: #3c4a5a;
-            margin-top: 4px;
+            font-size: 14px;
         }
+
         .hero .sub-info {
             display: flex;
             justify-content: center;
-            gap: 12px;
-            margin-top: 10px;
             flex-wrap: wrap;
-        }
-        .hero .sub-info span {
-            background: rgba(255, 255, 255, 0.6);
-            padding: 3px 14px;
-            border-radius: 4px;
-            font-size: 12px;
-            color: #1a2332;
+            gap: 8px;
+            margin-top: 12px;
         }
 
-        /* ===== 特色网格 ===== */
+        .hero .sub-info span {
+            padding: 4px 12px;
+            border-radius: 4px;
+            background: rgba(255,255,255,.65);
+            color: #1a2332;
+            font-size: 12px;
+        }
+
+        /* =========================
+           Features
+        ========================= */
+
         .features {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 8px;
             margin: 16px 0 18px;
         }
+
         .feature-item {
-            background: #f8fafc;
-            border-radius: 0;
             padding: 14px 6px;
-            text-align: center;
             border: 1px solid #eef1f4;
-        }
-        .feature-item i {
-            font-size: 22px;
-            color: #1a73e8;
-            display: block;
-            margin-bottom: 4px;
-        }
-        .feature-item .label {
-            font-weight: 600;
-            font-size: 13px;
-            color: #1a2332;
-        }
-        .feature-item .desc {
-            font-size: 11px;
-            color: #5f6b7a;
+            background: #f8fafc;
+            text-align: center;
         }
 
-        /* ===== 信息卡片 ===== */
+        .feature-item i {
+            display: block;
+            margin-bottom: 5px;
+            color: #1a73e8;
+            font-size: 22px;
+        }
+
+        .feature-item .label {
+            color: #1a2332;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .feature-item .desc {
+            color: #5f6b7a;
+            font-size: 11px;
+        }
+
+        /* =========================
+           Info
+        ========================= */
+
         .info-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 8px;
             margin: 14px 0 16px;
         }
+
         .info-card {
-            background: #f8fafc;
-            border-radius: 0;
-            padding: 14px 14px;
+            padding: 14px;
             border: 1px solid #eef1f4;
+            background: #f8fafc;
         }
+
         .info-card .label {
-            font-size: 11px;
             color: #5f6b7a;
-            text-transform: uppercase;
-            letter-spacing: 0.3px;
+            font-size: 11px;
             font-weight: 600;
+            letter-spacing: .3px;
         }
+
         .info-card .value {
+            margin-top: 3px;
+            color: #1a2332;
             font-size: 16px;
             font-weight: 600;
-            color: #1a2332;
-            margin-top: 2px;
+            word-break: break-word;
         }
+
         .info-card .value i {
-            color: #1a73e8;
             margin-right: 4px;
+            color: #1a73e8;
         }
 
-        /* ===== 商业推广卡片（直角） ===== */
-        .promo-section {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            margin: 18px 0 16px;
+        /* =========================
+           公告 / 活动
+        ========================= */
+
+        .notice {
+            margin: 16px 0;
+            padding: 15px 16px;
+            border: 1px solid #d2e3fc;
+            background: #f5f9ff;
         }
-        .promo-card {
-            border-radius: 0;
-            padding: 18px 14px;
-            text-align: center;
-            position: relative;
-            border: 1px solid #eef1f4;
-        }
-        .promo-card .price {
-            font-size: 28px;
-            font-weight: 700;
-            line-height: 1.2;
-        }
-        .promo-card .price small {
+
+        .notice-title {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            margin-bottom: 6px;
+            color: #1a73e8;
             font-size: 14px;
-            font-weight: 500;
-        }
-        .promo-card .desc {
-            font-size: 13px;
-            margin-top: 4px;
-            font-weight: 600;
-        }
-        .promo-card .badge {
-            position: absolute;
-            top: 8px;
-            right: 8px;
-            font-size: 10px;
             font-weight: 700;
-            padding: 2px 10px;
-            border-radius: 4px;
-            letter-spacing: 0.3px;
-        }
-        .promo-card .icon-big {
-            font-size: 28px;
-            display: block;
-            margin-bottom: 2px;
-        }
-        .promo-title {
-            background: #fffdf5;
-            border: 1px solid #ffe082;
-        }
-        .promo-title .price {
-            color: #e65100;
-        }
-        .promo-title .badge {
-            background: #ffe082;
-            color: #4e2e00;
-        }
-        .promo-title .sub-text {
-            font-size: 12px;
-            color: #795548;
-        }
-        .promo-ad {
-            background: #f5faff;
-            border: 1px solid #90caf9;
-        }
-        .promo-ad .price {
-            color: #0d3b4c;
-        }
-        .promo-ad .badge {
-            background: #1a73e8;
-            color: #fff;
-        }
-        .promo-ad .sub-text {
-            font-size: 12px;
-            color: #2c3a4a;
-        }
-        .promo-card .hot-tag {
-            display: inline-block;
-            background: #e53935;
-            color: #fff;
-            font-size: 11px;
-            font-weight: 700;
-            padding: 1px 12px;
-            border-radius: 4px;
         }
 
-        /* ===== 群规标题 ===== */
+        .notice-text {
+            color: #3c4a5a;
+            font-size: 13px;
+            line-height: 1.7;
+        }
+
+        /* =========================
+           Section
+        ========================= */
+
         .section-title {
-            font-size: 18px;
-            font-weight: 700;
-            color: #1a2332;
-            margin: 22px 0 10px;
             display: flex;
             align-items: center;
             gap: 8px;
+            margin: 22px 0 10px;
+            color: #1a2332;
+            font-size: 18px;
+            font-weight: 700;
         }
+
         .section-title i {
             color: #1a73e8;
         }
 
-        /* ===== 群规正文 ===== */
+        /* =========================
+           群规
+        ========================= */
+
         .rules-full {
-            background: #f8fafc;
-            border-radius: 0;
             padding: 16px 18px;
             border: 1px solid #eef1f4;
-            font-size: 14px;
+            background: #f8fafc;
             color: #2c3a4a;
+            font-size: 14px;
             line-height: 1.8;
         }
-        .rules-full .rule-item {
-            padding: 4px 0;
+
+        .rule-item {
+            padding: 7px 0;
             border-bottom: 1px solid #eef1f4;
         }
-        .rules-full .rule-item:last-child {
-            border-bottom: none;
+
+        .rule-item:last-child {
+            border-bottom: 0;
         }
-        .rules-full .rule-num {
-            display: inline-block;
-            background: #1a73e8;
-            color: #fff;
-            font-weight: 700;
-            font-size: 11px;
-            width: 20px;
-            height: 20px;
-            border-radius: 4px;
-            text-align: center;
-            line-height: 20px;
-            margin-right: 6px;
-            flex-shrink: 0;
-        }
-        .rules-full .rule-line {
+
+        .rule-line {
             display: flex;
             align-items: flex-start;
-            gap: 2px;
+            gap: 5px;
         }
-        .rules-full .rule-text {
+
+        .rule-num {
+            width: 20px;
+            height: 20px;
+            flex: 0 0 20px;
+            margin-top: 2px;
+            border-radius: 4px;
+            background: #1a73e8;
+            color: #fff;
+            font-size: 11px;
+            font-weight: 700;
+            line-height: 20px;
+            text-align: center;
+        }
+
+        .rule-text {
             flex: 1;
         }
-        .rules-full .highlight {
+
+        .highlight {
             color: #1a73e8;
             font-weight: 600;
         }
-        .rules-full .seg {
-            margin-top: 6px;
-            padding-top: 6px;
-            border-top: 1px solid #eef1f4;
-            font-size: 13px;
-            color: #3c4a5a;
-        }
-        .rules-full .seg-final {
-            margin-top: 8px;
-            padding-top: 10px;
-            border-top: 2px solid #1a73e8;
-            font-size: 14px;
-            color: #1a2332;
-            font-weight: 600;
+
+        /* =========================
+           群入口
+        ========================= */
+
+        .join-card {
+            margin: 18px 0;
+            padding: 20px;
+            border: 1px solid #d2e3fc;
+            background: #f8fbff;
             text-align: center;
         }
 
-        /* ===== 额外公告 ===== */
-        .extra-notice {
-            background: #f8fafc;
-            border-radius: 0;
-            padding: 16px 18px;
-            margin: 14px 0 10px;
-            border: 1px dashed #90caf9;
-        }
-        .extra-notice .title {
-            font-weight: 700;
-            font-size: 15px;
+        .join-card h3 {
+            margin-bottom: 5px;
             color: #1a2332;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            margin-bottom: 6px;
-        }
-        .extra-notice .title i {
-            color: #1a73e8;
-        }
-        .extra-notice p {
-            font-size: 13px;
-            color: #2c3a4a;
-            line-height: 1.8;
-        }
-        .extra-notice .tag {
-            display: inline-block;
-            background: #fff3cd;
-            color: #1a2332;
-            padding: 1px 10px;
-            border-radius: 4px;
-            font-size: 11px;
-            font-weight: 600;
-            margin-right: 4px;
+            font-size: 18px;
         }
 
-        /* ===== 群内黑话 ===== */
-        .meme-section {
-            background: #f8fafc;
-            border-radius: 0;
-            padding: 16px 18px;
-            margin: 14px 0 10px;
-            border: 1px solid #eef1f4;
-        }
-        .meme-section .title {
-            font-weight: 700;
-            font-size: 15px;
-            color: #1a2332;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            margin-bottom: 8px;
-        }
-        .meme-section .title i {
-            color: #f9a825;
-        }
-        .meme-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 6px;
-        }
-        .meme-item {
-            background: #ffffff;
-            border-radius: 0;
-            padding: 8px 10px;
-            font-size: 13px;
-            color: #1a2332;
-            text-align: center;
-            border: 1px solid #eef1f4;
-        }
-        .meme-item .emoji-big {
-            font-size: 24px;
-            display: block;
-        }
-        .meme-item .meaning {
-            font-size: 11px;
+        .join-card p {
+            margin-bottom: 12px;
             color: #5f6b7a;
+            font-size: 13px;
         }
 
-        /* ===== 运势互动 ===== */
-        .interact-area {
-            background: #f8fafc;
-            border-radius: 0;
-            padding: 18px 16px;
-            margin: 18px 0;
-            border: 1px solid #eef1f4;
-            text-align: center;
-        }
-        .interact-area h3 {
-            font-size: 16px;
-            color: #1a2332;
-            margin-bottom: 8px;
-        }
-        .interact-area .fortune-box {
-            background: #ffffff;
-            border-radius: 0;
-            padding: 16px;
-            min-height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 15px;
-            color: #1a2332;
-            border: 1px solid #eef1f4;
-            transition: all 0.2s;
-        }
-        .btn-fortune {
-            background: #1a73e8;
-            border: none;
-            color: #fff;
-            padding: 10px 28px;
-            border-radius: 4px;
-            font-weight: 600;
-            font-size: 14px;
-            cursor: pointer;
-            margin-top: 10px;
-            transition: all 0.15s;
-        }
-        .btn-fortune:active {
-            transform: scale(0.96);
-            opacity: 0.85;
-        }
-
-        /* ===== 留言板 ===== */
-        .msg-board {
-            background: #f8fafc;
-            border-radius: 0;
-            padding: 18px 16px;
-            margin: 18px 0;
-            border: 1px solid #eef1f4;
-        }
-        .msg-board .board-title {
-            font-size: 16px;
-            font-weight: 700;
-            color: #1a2332;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .msg-board .board-title i {
-            color: #1a73e8;
-        }
-        .msg-list {
-            max-height: 180px;
-            overflow-y: auto;
-            margin-bottom: 10px;
-        }
-        .msg-list::-webkit-scrollbar {
-            width: 4px;
-        }
-        .msg-list::-webkit-scrollbar-thumb {
-            background: #c5cdd8;
-            border-radius: 2px;
-        }
-        .msg-item {
-            background: #ffffff;
-            padding: 8px 12px;
-            border-radius: 0;
-            margin-bottom: 4px;
-            font-size: 13px;
-            color: #1a2332;
-            border-left: 3px solid #1a73e8;
-            border-bottom: 1px solid #eef1f4;
-        }
-        .msg-item .nick {
-            font-weight: 600;
-            color: #1a73e8;
-            margin-right: 4px;
-        }
-        .msg-item .time {
-            font-size: 10px;
-            color: #8a9aa8;
-            float: right;
-        }
-        .msg-input-area {
-            display: flex;
-            gap: 6px;
-            flex-wrap: wrap;
-        }
-        .msg-input-area input {
-            flex: 1;
-            min-width: 60px;
-            padding: 8px 12px;
-            border-radius: 0;
-            border: 1px solid #d5dce6;
-            background: #ffffff;
-            font-size: 13px;
-            color: #1a2332;
-            outline: none;
-        }
-        .msg-input-area input:focus {
-            border-color: #1a73e8;
-        }
-        .msg-input-area input::placeholder {
-            color: #8a9aa8;
-        }
-        .msg-input-area .btn-send {
-            background: #1a73e8;
-            border: none;
-            color: #fff;
-            padding: 8px 20px;
-            border-radius: 0;
-            font-weight: 600;
-            font-size: 13px;
-            cursor: pointer;
-        }
-        .msg-input-area .btn-send:active {
-            opacity: 0.85;
-        }
-        .msg-status {
-            font-size: 11px;
-            color: #8a9aa8;
-            margin-top: 6px;
-            text-align: center;
-        }
-
-        /* ===== 加群 ===== */
-        .join-area {
-            background: #f8fafc;
-            border-radius: 0;
-            padding: 22px 18px;
-            text-align: center;
-            border: 1px solid #eef1f4;
-            margin-top: 18px;
-        }
-        .join-area .big-number {
-            font-size: 34px;
-            font-weight: 700;
-            color: #1a2332;
-            letter-spacing: 2px;
-            background: #ffffff;
-            padding: 8px 18px;
-            border-radius: 0;
+        .qq-number {
             display: inline-block;
-            margin: 6px 0 14px;
-            font-family: 'Courier New', monospace;
+            margin: 4px 0 12px;
+            padding: 8px 16px;
             border: 1px solid #d5dce6;
+            background: #fff;
+            color: #1a2332;
+            font-family: monospace;
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: 1px;
         }
-        .btn-group {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            justify-content: center;
-        }
-        .btn {
+
+        .btn-primary {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            justify-content: center;
+            gap: 7px;
+            min-height: 44px;
             padding: 10px 24px;
-            border-radius: 0;
-            font-weight: 600;
-            font-size: 14px;
-            border: none;
-            cursor: pointer;
-            transition: all 0.15s;
-            text-decoration: none;
-            background: #eef1f4;
-            color: #1a2332;
-        }
-        .btn:active {
-            transform: scale(0.96);
-        }
-        .btn-primary {
+            border: 0;
             background: #1a73e8;
             color: #fff;
-        }
-        .btn-outline {
-            background: transparent;
-            border: 1px solid #1a73e8;
-            color: #1a73e8;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: transform .15s, opacity .15s;
         }
 
-        /* ===== 游戏入口 ===== */
+        .btn-primary:active {
+            transform: scale(.97);
+            opacity: .85;
+        }
+
+        /* =========================
+           小游戏
+        ========================= */
+
         .game-section {
-            margin: 18px 0 4px;
-            border-top: 1px solid #eef1f4;
-            padding-top: 18px;
+            margin: 22px 0 18px;
         }
-        .game-section .game-title {
-            font-size: 16px;
-            font-weight: 700;
+
+        .game-title {
+            margin-bottom: 10px;
             color: #1a2332;
-            text-align: center;
-            margin-bottom: 12px;
+            font-size: 18px;
+            font-weight: 700;
         }
-        .game-section .game-title i {
-            color: #1a73e8;
-        }
+
         .game-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 8px;
         }
-        .game-grid .game-btn {
-            background: #f8fafc;
+
+        .game-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 110px;
+            padding: 12px 6px;
             border: 1px solid #eef1f4;
-            border-radius: 0;
-            padding: 14px 4px;
-            text-align: center;
+            background: #f8fafc;
             cursor: pointer;
-            transition: all 0.15s;
+            user-select: none;
+            transition: transform .15s, background .15s;
         }
-        .game-grid .game-btn:active {
-            transform: scale(0.95);
-            background: #eef1f4;
+
+        .game-btn:active {
+            transform: scale(.96);
+            background: #eef4ff;
         }
-        .game-grid .game-btn .icon {
+
+        .game-btn .icon {
+            margin-bottom: 6px;
             font-size: 28px;
-            display: block;
         }
-        .game-grid .game-btn .name {
-            font-weight: 600;
-            font-size: 13px;
+
+        .game-btn .name {
             color: #1a2332;
-        }
-        .game-grid .game-btn .sub {
-            font-size: 10px;
-            color: #5f6b7a;
-        }
-        .game-grid .game-btn.reaction-btn {
-            border-color: #ffb300;
-        }
-        .game-grid .game-btn.game2048-btn {
-            border-color: #e65100;
-        }
-        .game-grid .game-btn.minesweeper-btn {
-            border-color: #43a047;
-        }
-
-        /* ===== 页脚 ===== */
-        .footer {
-            margin-top: 24px;
-            text-align: center;
-            font-size: 12px;
-            color: #8a9aa8;
-            border-top: 1px solid #eef1f4;
-            padding-top: 16px;
-            cursor: pointer;
-        }
-        .footer a {
-            color: #1a73e8;
-            text-decoration: none;
-        }
-        .easter-egg {
-            display: none;
-            background: #fff8e1;
-            border-radius: 0;
-            padding: 14px;
-            margin: 14px 0;
-            border: 1px solid #ffecb3;
-            color: #795548;
-            text-align: center;
-            font-weight: 600;
             font-size: 14px;
-        }
-        .easter-egg.show {
-            display: block;
+            font-weight: 700;
         }
 
-        /* ===== Toast ===== */
+        .game-btn .sub {
+            margin-top: 3px;
+            color: #7b8794;
+            font-size: 11px;
+        }
+
+        /* =========================
+           留言板
+        ========================= */
+
+        .message-board {
+            margin-top: 22px;
+        }
+
+        .msg-input-area {
+            display: grid;
+            grid-template-columns: 100px 1fr auto;
+            gap: 7px;
+            margin-bottom: 10px;
+        }
+
+        .msg-input-area input,
+        .msg-input-area textarea {
+            width: 100%;
+            min-width: 0;
+            border: 1px solid #d5dce6;
+            outline: none;
+            background: #fff;
+            color: #1a2332;
+            font-size: 13px;
+        }
+
+        .msg-input-area input {
+            height: 42px;
+            padding: 0 10px;
+        }
+
+        .msg-input-area textarea {
+            min-height: 42px;
+            padding: 11px 10px;
+            resize: vertical;
+        }
+
+        .msg-input-area input:focus,
+        .msg-input-area textarea:focus {
+            border-color: #1a73e8;
+        }
+
+        .btn-send {
+            min-width: 76px;
+            border: 0;
+            background: #1a73e8;
+            color: #fff;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .btn-send:disabled {
+            opacity: .55;
+            cursor: not-allowed;
+        }
+
+        .msg-list {
+            border: 1px solid #eef1f4;
+            background: #f8fafc;
+        }
+
+        .msg-item {
+            padding: 11px 12px;
+            border-bottom: 1px solid #eef1f4;
+            color: #2c3a4a;
+            font-size: 13px;
+            line-height: 1.6;
+            word-break: break-word;
+        }
+
+        .msg-item:last-child {
+            border-bottom: 0;
+        }
+
+        .msg-item .nick {
+            margin-right: 5px;
+            color: #1a73e8;
+            font-weight: 700;
+        }
+
+        .msg-item .time {
+            display: block;
+            margin-top: 2px;
+            color: #9aa5b1;
+            font-size: 10px;
+        }
+
+        /* =========================
+           Footer
+        ========================= */
+
+        footer {
+            margin-top: 28px;
+            padding-top: 18px;
+            border-top: 1px solid #eef1f4;
+            color: #8a9aa8;
+            font-size: 11px;
+            line-height: 1.7;
+            text-align: center;
+        }
+
+        /* =========================
+           Toast
+        ========================= */
+
         .toast {
             position: fixed;
-            bottom: 30px;
             left: 50%;
-            transform: translateX(-50%);
-            background: #1a2332;
-            color: #fff;
-            padding: 10px 24px;
-            border-radius: 0;
-            font-weight: 500;
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+            bottom: calc(24px + env(safe-area-inset-bottom));
+            z-index: 10000;
+            max-width: calc(100vw - 40px);
+            padding: 10px 16px;
+            transform: translate(-50%, 20px);
             opacity: 0;
-            transition: opacity 0.25s;
             pointer-events: none;
-            z-index: 999;
+            background: rgba(26,35,50,.94);
+            color: #fff;
             font-size: 13px;
-            max-width: 90%;
-            text-align: center;
-        }
-        .toast.show {
-            opacity: 1;
+            transition: opacity .2s, transform .2s;
         }
 
-        /* ===== 弹窗 ===== */
-        .qixi-overlay {
+        .toast.show {
+            opacity: 1;
+            transform: translate(-50%, 0);
+        }
+
+        /* =========================
+           弹窗
+        ========================= */
+
+        .modal-overlay {
             display: none;
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(4px);
-            z-index: 9998;
+            inset: 0;
+            z-index: 9000;
             align-items: center;
             justify-content: center;
             padding: 20px;
-        }
-        .qixi-overlay.active {
-            display: flex;
-        }
-        .qixi-modal {
-            background: #ffffff;
-            max-width: 400px;
-            width: 100%;
-            border-radius: 0;
-            padding: 32px 24px 28px;
-            text-align: center;
-            position: relative;
-            box-shadow: 0 12px 48px rgba(0, 0, 0, 0.18);
-            border: 1px solid #eef1f4;
-        }
-        .qixi-modal .close-btn {
-            position: absolute;
-            top: 10px;
-            right: 14px;
-            font-size: 22px;
-            color: #5f6b7a;
-            cursor: pointer;
-            background: none;
-            border: none;
-            padding: 4px 8px;
-        }
-        .qixi-modal .heart-icon {
-            font-size: 48px;
-            color: #e53935;
-            animation: heartBeat 1.2s ease-in-out infinite;
-            display: inline-block;
-        }
-        @keyframes heartBeat {
-            0%,
-            100% {
-                transform: scale(1);
-            }
-            14% {
-                transform: scale(1.15);
-            }
-            28% {
-                transform: scale(1);
-            }
-            42% {
-                transform: scale(1.1);
-            }
-            70% {
-                transform: scale(1);
-            }
-        }
-        .qixi-modal .title {
-            font-size: 22px;
-            font-weight: 700;
-            color: #1a2332;
-            margin: 6px 0 4px;
-        }
-        .qixi-modal .sub-title {
-            font-size: 13px;
-            color: #e53935;
-            font-weight: 600;
-            margin-bottom: 10px;
-            background: #fce4ec;
-            padding: 4px 14px;
-            border-radius: 4px;
-            display: inline-block;
-        }
-        .qixi-modal .body-text {
-            font-size: 14px;
-            color: #2c3a4a;
-            line-height: 1.8;
-            margin: 10px 0 14px;
-        }
-        .qixi-modal .body-text .highlight-pink {
-            color: #e53935;
-            font-weight: 700;
-        }
-        .qixi-modal .body-text .code-box {
-            display: inline-block;
-            background: #f5f7fa;
-            padding: 2px 14px;
-            border-radius: 4px;
-            font-family: 'Courier New', monospace;
-            font-weight: 700;
-            font-size: 17px;
-            color: #1a2332;
-            letter-spacing: 1px;
-            border: 1px solid #d5dce6;
-            margin: 4px 0;
-        }
-        .qixi-modal .date-tag {
-            display: inline-block;
-            background: #e8f0fe;
-            color: #1a73e8;
-            padding: 4px 16px;
-            border-radius: 4px;
-            font-size: 12px;
-            font-weight: 600;
-        }
-        .qixi-modal .btn-got-it {
-            background: #1a73e8;
-            border: none;
-            color: #fff;
-            padding: 12px 40px;
-            border-radius: 0;
-            font-weight: 600;
-            font-size: 16px;
-            cursor: pointer;
-            margin-top: 14px;
-            transition: all 0.15s;
-        }
-        .qixi-modal .btn-got-it:active {
-            transform: scale(0.96);
-            opacity: 0.85;
+            background: rgba(0,0,0,.45);
         }
 
-        /* ===== 游戏全屏覆盖 ===== */
-        .game-overlay {
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal {
+            width: min(440px, 100%);
+            padding: 24px 20px;
+            background: #fff;
+            box-shadow: 0 20px 60px rgba(0,0,0,.2);
+            text-align: center;
+        }
+
+        .modal .icon {
+            font-size: 50px;
+        }
+
+        .modal .title {
+            margin: 8px 0;
+            color: #1a2332;
+            font-size: 21px;
+            font-weight: 700;
+        }
+
+        .modal .body {
+            color: #3c4a5a;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        .modal .close {
+            margin-top: 16px;
+            min-width: 120px;
+            padding: 10px 20px;
+            border: 0;
+            background: #1a73e8;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        /* =========================
+           云原神传送
+        ========================= */
+
+        .portal-effect {
             display: none;
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: #f5f7fa;
-            z-index: 1000;
-            touch-action: none;
-        }
-        .game-overlay.active {
-            display: block;
-        }
-        .game-exit {
-            position: absolute;
-            top: 12px;
-            right: 14px;
-            background: rgba(0, 0, 0, 0.06);
-            color: #1a2332;
-            border: 1px solid #d5dce6;
-            font-size: 20px;
-            padding: 6px 14px;
-            border-radius: 0;
-            cursor: pointer;
-            z-index: 1002;
-        }
-        .game-overlay .game-title-bar {
-            position: absolute;
-            top: 12px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: #1a2332;
-            font-size: 18px;
-            font-weight: 700;
-            z-index: 1002;
-            background: #ffffff;
-            padding: 4px 20px;
-            border-radius: 0;
-            border: 1px solid #eef1f4;
-            white-space: nowrap;
-        }
-
-        /* ===== 反应测试 ===== */
-        #reactionGame .reaction-area {
-            width: 100%;
-            height: 100%;
-            display: flex;
+            inset: 0;
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
             flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: #1a2332;
-            cursor: pointer;
-            user-select: none;
-            transition: background 0.1s;
-            background: #f5f7fa;
+            background: rgba(26,115,232,.94);
+            color: #fff;
         }
-        #reactionGame .reaction-area .main-text {
-            font-size: 44px;
+
+        .portal-effect.active {
+            display: flex;
+        }
+
+        .portal-cloud {
+            margin-bottom: 15px;
+            font-size: 80px;
+            animation: spinPortal 1s linear infinite;
+        }
+
+        .portal-text {
+            font-size: 25px;
             font-weight: 700;
-            margin-bottom: 16px;
-        }
-        #reactionGame .reaction-area .sub-text {
-            font-size: 18px;
-            opacity: 0.6;
-        }
-        #reactionGame .reaction-area .stats {
-            position: absolute;
-            bottom: 40px;
-            left: 0;
-            right: 0;
-            text-align: center;
-            font-size: 16px;
-            color: #5f6b7a;
-        }
-        #reactionGame .reaction-area .stats span {
-            display: inline-block;
-            margin: 0 14px;
         }
 
-        /* ===== 2048 ===== */
-        #game2048 .board-wrap {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100%;
-            padding: 70px 20px 40px;
-        }
-        #game2048 .score-row {
-            display: flex;
-            gap: 16px;
-            margin-bottom: 14px;
-            color: #1a2332;
-            font-size: 16px;
-            font-weight: 600;
-        }
-        #game2048 .score-row span {
-            background: #ffffff;
-            padding: 4px 16px;
-            border-radius: 0;
-            border: 1px solid #eef1f4;
-        }
-        #game2048 .grid-2048 {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 6px;
-            background: #eef1f4;
-            padding: 8px;
-            border-radius: 0;
-            max-width: 400px;
-            width: 100%;
-            aspect-ratio: 1/1;
-            touch-action: none;
-        }
-        #game2048 .cell {
-            background: #ffffff;
-            border-radius: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 30px;
-            font-weight: 700;
-            color: #1a2332;
-            transition: all 0.1s ease;
-            aspect-ratio: 1/1;
-        }
-        #game2048 .cell[data-val="2"] {
-            background: #f5f7fa;
-            color: #1a2332;
-        }
-        #game2048 .cell[data-val="4"] {
-            background: #eef1f4;
-            color: #1a2332;
-        }
-        #game2048 .cell[data-val="8"] {
-            background: #ffe0b2;
-            color: #1a2332;
-        }
-        #game2048 .cell[data-val="16"] {
-            background: #ffcc80;
-            color: #1a2332;
-        }
-        #game2048 .cell[data-val="32"] {
-            background: #ffb74d;
-            color: #fff;
-        }
-        #game2048 .cell[data-val="64"] {
-            background: #ffa726;
-            color: #fff;
-        }
-        #game2048 .cell[data-val="128"] {
-            background: #ffd54f;
-            color: #1a2332;
-        }
-        #game2048 .cell[data-val="256"] {
-            background: #ffca28;
-            color: #1a2332;
-        }
-        #game2048 .cell[data-val="512"] {
-            background: #ffc107;
-            color: #1a2332;
-        }
-        #game2048 .cell[data-val="1024"] {
-            background: #ffb300;
-            color: #1a2332;
-        }
-        #game2048 .cell[data-val="2048"] {
-            background: #ff8f00;
-            color: #fff;
-        }
-        #game2048 .cell.merged {
-            animation: pop2048 0.15s ease;
-        }
-        @keyframes pop2048 {
-            0% {
-                transform: scale(0.85);
-            }
-            50% {
-                transform: scale(1.1);
-            }
-            100% {
-                transform: scale(1);
-            }
-        }
-
-        /* ===== 扫雷 ===== */
-        #minesweeper .ms-wrap {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100%;
-            padding: 70px 20px 40px;
-        }
-        #minesweeper .ms-header {
-            display: flex;
-            gap: 16px;
-            margin-bottom: 12px;
-            color: #1a2332;
-            font-size: 16px;
-            font-weight: 600;
-        }
-        #minesweeper .ms-header span {
-            background: #ffffff;
-            padding: 4px 16px;
-            border-radius: 0;
-            border: 1px solid #eef1f4;
-        }
-        #minesweeper .ms-grid {
-            display: grid;
-            gap: 2px;
-            background: #d5dce6;
-            padding: 4px;
-            border-radius: 0;
-            max-width: 400px;
-            width: 100%;
-            touch-action: none;
-        }
-        #minesweeper .ms-cell {
-            background: #f5f7fa;
-            border-radius: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 18px;
-            font-weight: 700;
-            color: #1a2332;
-            cursor: pointer;
-            aspect-ratio: 1/1;
-            transition: background 0.1s;
-            user-select: none;
-            -webkit-user-select: none;
-        }
-        #minesweeper .ms-cell:active {
-            transform: scale(0.92);
-        }
-        #minesweeper .ms-cell.revealed {
-            background: #ffffff;
-        }
-        #minesweeper .ms-cell.flagged {
-            background: #fff8e1;
-        }
-        #minesweeper .ms-cell.mine-exploded {
-            background: #e53935;
-            color: #fff;
-        }
-        #minesweeper .ms-cell .num-1 {
-            color: #1a73e8;
-        }
-        #minesweeper .ms-cell .num-2 {
-            color: #43a047;
-        }
-        #minesweeper .ms-cell .num-3 {
-            color: #e53935;
-        }
-        #minesweeper .ms-cell .num-4 {
-            color: #5e35b1;
-        }
-        #minesweeper .ms-cell .num-5 {
-            color: #e65100;
-        }
-        #minesweeper .ms-cell .num-6 {
-            color: #00838f;
-        }
-        #minesweeper .ms-cell .num-7 {
-            color: #6a1b9a;
-        }
-        #minesweeper .ms-cell .num-8 {
-            color: #78909c;
-        }
-
-        /* ===== 响应式 ===== */
-        @media (max-width: 600px) {
-            .container {
-                padding: 16px 14px 24px;
-            }
-            .hero h1 {
-                font-size: 20px;
-            }
-            .features {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .info-grid {
-                grid-template-columns: 1fr;
-            }
-            .promo-section {
-                grid-template-columns: 1fr 1fr;
-                gap: 8px;
-            }
-            .promo-card .price {
-                font-size: 22px;
-            }
-            .btn {
-                width: 100%;
-                justify-content: center;
-            }
-            .join-area .big-number {
-                font-size: 26px;
-                letter-spacing: 1px;
-            }
-            .game-grid {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 6px;
-            }
-            .game-grid .game-btn .icon {
-                font-size: 22px;
-            }
-            .game-grid .game-btn .name {
-                font-size: 11px;
-            }
-            .meme-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-            #game2048 .cell {
-                font-size: 22px;
-            }
-            #minesweeper .ms-cell {
-                font-size: 14px;
-            }
-            .qixi-modal {
-                padding: 24px 18px 20px;
-            }
-            .qixi-modal .title {
-                font-size: 19px;
-            }
-        }
-        @media (max-width: 400px) {
-            .promo-section {
-                grid-template-columns: 1fr;
-            }
-            .meme-grid {
-                grid-template-columns: 1fr;
-            }
-            .features {
-                grid-template-columns: 1fr 1fr;
-            }
-            .game-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-        }
-
-        /* ===== 移除所有圆角 ===== */
-        .container,
-        .owner-message,
-        .hero,
-        .info-card,
-        .promo-card,
-        .rules-full,
-        .extra-notice,
-        .meme-section,
-        .interact-area,
-        .msg-board,
-        .join-area,
-        .game-grid .game-btn,
-        .qixi-modal,
-        .btn,
-        .btn-fortune,
-        .msg-input-area input,
-        .msg-input-area .btn-send,
-        .toast,
-        .game-exit,
-        .game-overlay .game-title-bar,
-        #game2048 .grid-2048,
-        #game2048 .cell,
-        #minesweeper .ms-grid,
-        #minesweeper .ms-cell {
-            border-radius: 0 !important;
-        }
-        .logo-icon {
-            border-radius: 8px !important;
-        }
-        .status-badge {
-            border-radius: 4px !important;
-        }
-        .hero .sub-info span {
-            border-radius: 2px !important;
-        }
-    </style>
-</head>
-<body>
-
-    <!-- ====== 七夕弹窗 ====== -->
-    <div class="qixi-overlay" id="qixiOverlay">
-        <div class="qixi-modal">
-            <button class="close-btn" onclick="closeQixi()"><i class="fas fa-times"></i></button>
-            <div class="heart-icon">💖</div>
-            <div class="title">迟来的七夕节礼物</div>
-            <div class="sub-title">🎁 群主搞忘了 · 现在补上！</div>
-            <div class="body-text">
-                群主七夕那天忙着赶作业，把礼物给忘了喵～<br>
-                现在补上！<br><br>
-                <span class="highlight-pink">⏰ 8月19日 - 8月20日</span><br>
-                在群里 <span class="highlight-pink">@群主</span> 发送<br>
-                <span class="code-box">surhrkc</span><br>
-                <span style="font-size:18px;display:block;margin:4px 0;">👇</span>
-                即可 <span class="highlight-pink" style="font-size:18px;">免费领取</span><br>
-                <span style="font-size:20px;font-weight:700;color:#e53935;">💕 七夕限定群头衔 💕</span>
-            </div>
-            <div class="date-tag">📅 2026.8.19 - 8.20</div>
-            <button class="btn-got-it" onclick="closeQixi()">知道啦 ❤️</button>
-        </div>
-    </div>
-
-    <!-- ====== 彩蛋云朵 ====== -->
-    <div class="cloud-egg" id="cloudEgg" style="position:fixed;top:10%;right:5%;z-index:100;cursor:pointer;user-select:none;touch-action:manipulation;opacity:0.4;transition:all 0.3s;font-size:72px;color:rgba(26,115,232,0.25);animation:floatCloud 6s ease-in-out infinite;" onclick="handleCloudClick()">
-        ☁️
-        <span style="position:absolute;bottom:-28px;left:50%;transform:translateX(-50%);font-size:11px;color:rgba(0,0,0,0.15);white-space:nowrap;font-weight:500;">戳我</span>
-        <span id="cloudCounter" style="position:absolute;top:-8px;right:-8px;background:#e53935;color:#fff;font-size:11px;font-weight:700;width:24px;height:24px;display:flex;align-items:center;justify-content:center;border-radius:4px;opacity:0;transform:scale(0.5);transition:all 0.3s cubic-bezier(0.175,0.885,0.32,1.275);">0</span>
-    </div>
-    <style>
-        .cloud-egg .click-counter.show {
-            opacity: 1 !important;
-            transform: scale(1) !important;
-        }
-        @keyframes floatCloud {
-            0%,
-            100% {
-                transform: translateY(0px);
-            }
-            50% {
-                transform: translateY(-14px);
-            }
-        }
-    </style>
-
-    <!-- ====== 传送特效 ====== -->
-    <div class="portal-effect" id="portalEffect" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(26,115,232,0.9);z-index:9999;align-items:center;justify-content:center;flex-direction:column;color:#fff;font-size:28px;font-weight:700;">
-        <div style="font-size:100px;animation:spinPortal 1s linear infinite;margin-bottom:16px;">☁️</div>
-        <div>🌌 传送至云原神 ...</div>
-    </div>
-    <style>
         @keyframes spinPortal {
             0% {
                 transform: rotate(0deg) scale(1);
@@ -1339,1070 +735,2280 @@
                 transform: rotate(360deg) scale(1);
             }
         }
-        .portal-effect.active {
-            display: flex !important;
+
+        /* =========================
+           游戏覆盖层
+        ========================= */
+
+        .game-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 1000;
+            overflow: auto;
+            padding:
+                max(14px, env(safe-area-inset-top))
+                14px
+                max(20px, env(safe-area-inset-bottom));
+            background: #f5f7fa;
+            touch-action: manipulation;
+        }
+
+        .game-overlay.active {
+            display: block;
+        }
+
+        .game-exit {
+            position: absolute;
+            top: max(12px, env(safe-area-inset-top));
+            right: 14px;
+            z-index: 5;
+            width: 44px;
+            height: 44px;
+            border: 1px solid #d5dce6;
+            background: rgba(255,255,255,.9);
+            color: #1a2332;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        .game-title-bar {
+            padding: 8px 55px 16px 5px;
+            color: #1a2332;
+            font-size: 22px;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        /* =========================
+           反应测试
+        ========================= */
+
+        .reaction-area {
+            display: flex;
+            min-height: calc(100vh - 100px);
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            background: #f5f7fa;
+            user-select: none;
+        }
+
+        .reaction-area .main-text {
+            color: #1a2332;
+            font-size: 30px;
+            font-weight: 700;
+        }
+
+        .reaction-area .sub-text {
+            margin-top: 8px;
+            color: #5f6b7a;
+            font-size: 14px;
+        }
+
+        .reaction-area .stats {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 25px;
+            color: #5f6b7a;
+            font-size: 12px;
+        }
+
+        /* =========================
+           2048
+        ========================= */
+
+        .board-wrap {
+            width: min(100%, 430px);
+            margin: 0 auto;
+        }
+
+        .score-row,
+        .ms-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+            color: #5f6b7a;
+            font-size: 13px;
+        }
+
+        .score-row span:last-child,
+        .ms-header span:last-child {
+            padding: 6px 12px;
+            border: 1px solid #d5dce6;
+            background: #fff;
+            cursor: pointer;
+        }
+
+        .grid-2048 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 7px;
+            padding: 7px;
+            background: #c7ced8;
+            touch-action: none;
+            user-select: none;
+        }
+
+        .tile-2048 {
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #e7ebf0;
+            color: #1a2332;
+            font-size: clamp(20px, 7vw, 34px);
+            font-weight: 700;
+        }
+
+        /* =========================
+           扫雷
+        ========================= */
+
+        .ms-wrap {
+            width: min(100%, 430px);
+            margin: 0 auto;
+        }
+
+        .ms-grid {
+            display: grid;
+            grid-template-columns: repeat(9, 1fr);
+            gap: 2px;
+            padding: 3px;
+            background: #9da7b3;
+            touch-action: manipulation;
+            user-select: none;
+        }
+
+        .ms-cell {
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 0;
+            background: #dce1e7;
+            color: #1a2332;
+            cursor: pointer;
+            font-size: clamp(11px, 3.5vw, 17px);
+            font-weight: 700;
+        }
+
+        .ms-cell.revealed {
+            background: #f3f5f7;
+            cursor: default;
+        }
+
+        .ms-cell.mine {
+            background: #ffcdd2;
+        }
+
+        /* =========================
+           响应式
+        ========================= */
+
+        @media (max-width: 520px) {
+            .container {
+                padding-left: 14px;
+                padding-right: 14px;
+            }
+
+            .features {
+                gap: 5px;
+            }
+
+            .feature-item {
+                padding-left: 3px;
+                padding-right: 3px;
+            }
+
+            .feature-item i {
+                font-size: 20px;
+            }
+
+            .feature-item .label {
+                font-size: 12px;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .game-btn {
+                min-height: 100px;
+            }
+
+            .msg-input-area {
+                grid-template-columns: 1fr;
+            }
+
+            .btn-send {
+                min-height: 42px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .hero h1 {
+                font-size: 21px;
+            }
+
+            .features {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .game-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .game-btn {
+                min-height: 82px;
+            }
+        }
+
+        /* =========================
+           减少动画
+        ========================= */
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+                animation-duration: .01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: .01ms !important;
+            }
         }
     </style>
+</head>
 
-    <!-- ====== 主页容器 ====== -->
-    <div class="container" id="mainPage">
-        <div class="content">
+<body>
 
-            <!-- 状态栏模拟 -->
-            <div class="status-bar">
-                <span>GG车队</span>
-                <span>📶 在线</span>
-            </div>
+<div class="container" id="mainPage">
 
-            <!-- 头部 -->
-            <div class="header">
-                <div class="logo-area">
-                    <div class="logo-icon"><i class="fas fa-gamepad"></i></div>
-                    <div class="logo-text">
-                        GG车队
-                        <span class="sub">无畏契约手游 · 游戏交流</span>
-                    </div>
-                </div>
-                <div class="status-badge"><i class="fas fa-circle" style="font-size:7px;color:#43a047;margin-right:4px;"></i>活跃</div>
-            </div>
+    <div class="content">
 
-            <!-- 群主寄语 -->
-            <div class="owner-message">
-                <div class="label"><i class="fas fa-crown"></i> 群主有话说</div>
-                <p>📌 欢迎来到咱们这个小窝～喵！</p>
-                <p>群主是个苦逼学生党，平时课业繁重，不能时刻盯着群里，所以群内的热闹气氛全靠大家自觉维护，每一位成员都是这个大家庭的主人翁～</p>
-                <div class="sign">—— 你们的群主 💙</div>
-            </div>
+        <!-- 状态栏 -->
+        <div class="status-bar">
+            <span>GG车队</span>
+            <span>📶 在线</span>
+        </div>
 
-            <!-- 横幅 -->
-            <div class="hero">
-                <h1>🎮 无畏契约手游 · GG车队</h1>
-                <p>开黑 · 整活 · 一起上分</p>
-                <div class="sub-info">
-                    <span><i class="fas fa-users"></i> 活跃小窝</span>
-                    <span><i class="fas fa-clock"></i> 随时有人</span>
-                    <span><i class="fas fa-trophy"></i> 快乐游戏</span>
-                </div>
-            </div>
-
-            <!-- 特色 -->
-            <div class="features">
-                <div class="feature-item">
-                    <i class="fas fa-users"></i>
-                    <div class="label">开黑车队</div>
-                    <div class="desc">随时摇人</div>
-                </div>
-                <div class="feature-item">
-                    <i class="fas fa-graduation-cap"></i>
-                    <div class="label">萌新教学</div>
-                    <div class="desc">老带新</div>
-                </div>
-                <div class="feature-item">
+        <!-- 头部 -->
+        <div class="header">
+            <div class="logo-area">
+                <div class="logo-icon">
                     <i class="fas fa-gamepad"></i>
-                    <div class="label">内战整活</div>
-                    <div class="desc">自定义娱乐</div>
                 </div>
-                <div class="feature-item">
-                    <i class="fas fa-comment-dots"></i>
-                    <div class="label">聊天吹水</div>
-                    <div class="desc">日常唠嗑</div>
+
+                <div class="logo-text">
+                    GG车队
+                    <span class="sub">无畏契约手游 · 游戏交流</span>
                 </div>
             </div>
 
-            <!-- 基础信息 -->
-            <div class="info-grid">
-                <div class="info-card">
-                    <div class="label"><i class="fas fa-tag"></i> 群名称</div>
-                    <div class="value">无畏契约手游 GG车队</div>
-                </div>
-                <div class="info-card">
-                    <div class="label"><i class="fas fa-user-check"></i> 入群方式</div>
-                    <div class="value"><i class="fas fa-check-circle" style="color:#43a047;"></i> 审核制</div>
-                </div>
-                <div class="info-card">
-                    <div class="label"><i class="fas fa-calendar"></i> 成立时间</div>
-                    <div class="value">2026 · 夏</div>
-                </div>
-                <div class="info-card">
-                    <div class="label"><i class="fas fa-map-pin"></i> 主要游戏</div>
-                    <div class="value">无畏契约手游</div>
-                </div>
+            <div class="status-badge">
+                <i class="fas fa-circle"
+                   style="font-size:7px;color:#43a047;margin-right:4px;"></i>
+                活跃
+            </div>
+        </div>
+
+        <!-- 群主寄语 -->
+        <div class="owner-message">
+            <div class="label">
+                <i class="fas fa-crown"></i>
+                群主有话说
             </div>
 
-            <!-- ====== 商业推广卡片 ====== -->
-            <div class="promo-section">
-                <div class="promo-card promo-title">
-                    <span class="badge">✨ 热卖</span>
-                    <span class="icon-big"><i class="fas fa-crown"></i></span>
-                    <div class="price">6 <small>元</small></div>
-                    <div class="desc"><strong>定制专属群头衔</strong></div>
-                    <div class="sub-text">你的个性标签，全群唯一</div>
-                    <div style="margin-top:6px;"><span class="hot-tag">🔥 找群主定制</span></div>
-                </div>
-                <div class="promo-card promo-ad">
-                    <span class="badge">📢 限量</span>
-                    <span class="icon-big"><i class="fas fa-bullhorn"></i></span>
-                    <div class="price">9.9 <small>元/周</small></div>
-                    <div class="desc"><strong>群内广告位招租</strong></div>
-                    <div class="sub-text">你的内容，全群可见</div>
-                    <div style="margin-top:6px;"><span class="hot-tag">⚡ 仅剩 2 席</span></div>
-                </div>
+            <p>📌 欢迎来到咱们这个小窝～喵！</p>
+
+            <p>
+                群主是个苦逼学生党，平时课业繁重，不能时刻盯着群里，
+                所以群内的热闹气氛全靠大家自觉维护，
+                每一位成员都是这个大家庭的主人翁～
+            </p>
+
+            <div class="sign">
+                —— 你们的群主 💙
+            </div>
+        </div>
+
+        <!-- Hero -->
+        <div class="hero">
+            <h1>🎮 GG车队</h1>
+
+            <p>
+                无畏契约手游 · 开黑 · 交流 · 整活 · 上分
+            </p>
+
+            <div class="sub-info">
+                <span>🔥 活跃交流群</span>
+                <span>🎯 快乐游戏</span>
+                <span>🤝 友好交流</span>
+            </div>
+        </div>
+
+        <!-- 特色 -->
+        <div class="features">
+
+            <div class="feature-item">
+                <i class="fas fa-users"></i>
+                <div class="label">多人开黑</div>
+                <div class="desc">随时组队</div>
             </div>
 
-            <!-- ====== 群规 ====== -->
-            <div class="section-title"><i class="fas fa-shield-alt"></i> 📌 群规 · 小窝公约</div>
-            <div class="rules-full">
-
-                <div style="font-size:15px;font-weight:600;color:#1a2332;margin-bottom:4px;">
-                    🐾 几条小约定，拜托大家配合：
-                </div>
-
-                <div class="rule-item">
-                    <div class="rule-line">
-                        <span class="rule-num">1</span>
-                        <span class="rule-text">友善第一，游戏有输赢，心态没输赢。连跪了互相调侃两句可以，但别往心里去，更别往队友身上甩锅喵。</span>
-                    </div>
-                </div>
-
-                <div class="rule-item">
-                    <div class="rule-line">
-                        <span class="rule-num">2</span>
-                        <span class="rule-text">禁发广告、外部链接、擦边内容，绿色环境从你我做起。</span>
-                    </div>
-                </div>
-
-                <div class="rule-item">
-                    <div class="rule-line">
-                        <span class="rule-num">3</span>
-                        <span class="rule-text">长期潜水的宝子偶尔也冒个泡，每周会不定时清理"僵尸粉"哦～（不过只要你说过话，群主都记得住你！）</span>
-                    </div>
-                </div>
-
-                <div class="seg">
-                    <p>有事找管理员或群主时，直接在群里 <span class="highlight">@群主</span> 或 <span class="highlight">@管理员</span> 即可，看到后会第一时间回复你喵～如果遇到急事也可以私聊，但群主回复可能没那么快，提前说声抱歉啦！</p>
-                </div>
-
-                <div class="seg">
-                    <p><span class="highlight">👑 关于管理员招募：</span>如果你热爱这个群、平时在线时间长、又愿意帮忙带带新人，欢迎随时 <span class="highlight">@群主</span> 说一声"我想当管理"，群主会认真考察的！不过名额有限，先到先得喵～</p>
-                </div>
-
-                <div class="seg">
-                    <p><span class="highlight">🏷️ 关于群头衔：</span>群主偶尔会搞活动送出定制头衔，到时候会在群里明确通知"本次送头衔，想要的来找我定制"。只有群主公开说明送头衔的时候，才接受定制申请，其他时候请勿私聊询问哦，群主真的会忙不过来……感谢体谅喵！🙏</p>
-                </div>
-
-                <div class="seg-final">
-                    🎉 最后最后：希望大家多多活跃，多拉自己的开黑搭子进来！<br>
-                    人多了内战才好组，车队才好摇！群是大家的，一起养大才有意思～<br>
-                    有什么好建议也随时甩过来，群主看到一定认真研究。<br>
-                    <span style="font-size:17px;">祝大家在群里把把爆头，天天开心喵！ 🐱</span>
-                </div>
-
+            <div class="feature-item">
+                <i class="fas fa-comments"></i>
+                <div class="label">游戏交流</div>
+                <div class="desc">分享心得</div>
             </div>
 
-            <!-- ====== 群主碎碎念 ====== -->
-            <div class="extra-notice">
-                <div class="title"><i class="fas fa-heart" style="color:#e53935;"></i> 群主の碎碎念</div>
-                <p>
-                    <span class="tag">📖</span> 建群初衷就是想让喜欢无畏契约手游的宝子们有个地方一起玩、一起唠嗑。<br>
-                    <span class="tag">🎯</span> 群主不是机器人，看到消息会回，没回就是在赶作业/考试/睡觉……<br>
-                    <span class="tag">💬</span> 群里没有架子，大家都是朋友，有什么需求直接说，别客气！<br>
-                    <span class="tag">🎮</span> 上车了别害羞，开麦说话，输了不亏，赢了血赚！
-                </p>
+            <div class="feature-item">
+                <i class="fas fa-trophy"></i>
+                <div class="label">一起上分</div>
+                <div class="desc">冲击高段</div>
             </div>
 
-            <!-- ====== 群内黑话 ====== -->
-            <div class="meme-section">
-                <div class="title"><i class="fas fa-laugh-squint"></i> 群内黑话 · 懂的自然懂</div>
-                <div class="meme-grid">
-                    <div class="meme-item">
-                        <span class="emoji-big">🐱</span>
-                        "喵"
-                        <div class="meaning">语气助词，表示友好/卖萌</div>
-                    </div>
-                    <div class="meme-item">
-                        <span class="emoji-big">💀</span>
-                        "白给了"
-                        <div class="meaning">枪法失误送了人头</div>
-                    </div>
-                    <div class="meme-item">
-                        <span class="emoji-big">🚗</span>
-                        "摇人"
-                        <div class="meaning">群里喊人组队开黑</div>
-                    </div>
-                    <div class="meme-item">
-                        <span class="emoji-big">🧠</span>
-                        "脑浆局"
-                        <div class="meaning">打得稀碎但很欢乐的对局</div>
-                    </div>
-                    <div class="meme-item">
-                        <span class="emoji-big">🔥</span>
-                        "红温了"
-                        <div class="meaning">被打急了/认真了</div>
-                    </div>
-                    <div class="meme-item">
-                        <span class="emoji-big">🐟</span>
-                        "潜水怪"
-                        <div class="meaning">只看不说话的人</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- ====== 运势互动 ====== -->
-            <div class="interact-area">
-                <h3><i class="fas fa-sparkles"></i> 今日游戏运势</h3>
-                <div class="fortune-box" id="fortuneBox">🌟 点击下方按钮，测测你今天的上分运势！</div>
-                <button class="btn-fortune" onclick="showFortune()"><i class="fas fa-dice"></i> 抽运势</button>
-            </div>
-
-            <!-- ====== 隐藏彩蛋 ====== -->
-            <div id="easterEgg" class="easter-egg">
-                🎉 恭喜你触发了隐藏彩蛋！<br>
-                愿你每一发都是爆头，每一局都是 MVP！<br>
-                <span style="display:block;margin-top:6px;font-size:26px;">💥🔫🐱</span>
-            </div>
-
-            <!-- ====== 留言板 ====== -->
-            <div class="msg-board" id="msgBoard">
-                <div class="board-title"><i class="fas fa-comments"></i> 群友留言墙</div>
-                <div class="msg-list" id="msgList">
-                    <div style="text-align:center;color:#8a9aa8;padding:16px;font-size:13px;">
-                        <i class="fas fa-spinner fa-spin"></i> 加载留言中...
-                    </div>
-                </div>
-                <div class="msg-input-area">
-                    <input type="text" id="msgNick" placeholder="昵称" maxlength="10">
-                    <input type="text" id="msgContent" placeholder="写点什么..." maxlength="50">
-                    <button class="btn-send" onclick="sendMessage()"><i class="fas fa-paper-plane"></i> 发送</button>
-                </div>
-                <div class="msg-status" id="msgStatus">💡 留言会保存在云端，所有人可见</div>
-            </div>
-
-            <!-- ====== 加群核心 ====== -->
-            <div class="join-area">
-                <div style="font-size:14px;color:#5f6b7a;margin-bottom:2px;"><i class="fab fa-qq"></i> QQ群号</div>
-                <div class="big-number" id="groupNumber">775985819</div>
-                <div class="btn-group">
-                    <button class="btn btn-primary" onclick="copyQQ()"><i class="fas fa-copy"></i> 复制群号</button>
-                    <a class="btn btn-outline" href="https://qun.qq.com/universal-share/share?ac=1&authKey=TS5G1ZE39%2B9KvfgxbnPC4KuoxNN1gwPdiLDZnpTcf6M4NePQyCB3raqavUGEXqd&bus_id_data=eYJncM91cENVZGUIoI3NzU50DU4MTkiLCJ0b2tlbli6ljZtTFd2TTlvbk9pY2dSZmdhNFhyYWptUFpsMDA0QU_pmdTF2THZBVIgzdZD1VGkzNE5CblJzUFI2RzJ1cmdtMUwiLCJ1aW4iOiizNjk2NzA0OTU3In0%3D&data=A-uCyfx4vzsK30M7sRidqkWzt03n1rSakLmJ5YO48hCNYsF2YPMVKMxJSHgxXjeKGey0aEsg8Rkx6COVCC_pg&svctype=4&tempid=h5_group_info" target="_blank"><i class="fas fa-arrow-right"></i> 直达加群</a>
-                </div>
-                <div style="margin-top:12px;font-size:12px;color:#5f6b7a;">
-                    <i class="fas fa-info-circle"></i> 加群后请查看群公告获取更多信息喵～
-                </div>
-            </div>
-
-            <!-- ====== 游戏入口 ====== -->
-            <div class="game-section">
-                <div class="game-title"><i class="fas fa-gamepad"></i> 群友小游戏 · 三连玩</div>
-                <div class="game-grid">
-                    <div class="game-btn reaction-btn" onclick="openGame('reaction')">
-                        <span class="icon">⚡</span>
-                        <span class="name">反应测试</span>
-                        <span class="sub">测手速</span>
-                    </div>
-                    <div class="game-btn game2048-btn" onclick="openGame('2048')">
-                        <span class="icon">🟦</span>
-                        <span class="name">2048</span>
-                        <span class="sub">合成数字</span>
-                    </div>
-                    <div class="game-btn minesweeper-btn" onclick="openGame('minesweeper')">
-                        <span class="icon">💣</span>
-                        <span class="name">扫雷</span>
-                        <span class="sub">经典益智</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- ====== 页脚 ====== -->
-            <div class="footer" id="footerTrigger">
-                <p>© 2026 GG车队 · 用 <a href="https://github.com" target="_blank">GitHub Pages</a> 托管</p>
-                <p style="margin-top:3px;font-size:11px;color:#8a9aa8;">点击这里 5 次有惊喜 ✨</p>
+            <div class="feature-item">
+                <i class="fas fa-heart"></i>
+                <div class="label">轻松氛围</div>
+                <div class="desc">快乐第一</div>
             </div>
 
         </div>
-    </div>
 
-    <!-- ============================================================ -->
-    <!-- ====== 游戏面板1：反应测试 ====== -->
-    <div class="game-overlay" id="reactionGame">
-        <button class="game-exit" onclick="closeGame('reaction')"><i class="fas fa-times"></i></button>
-        <div class="game-title-bar">⚡ 反应测试</div>
-        <div class="reaction-area" id="reactionArea" onclick="handleReactionClick()">
-            <div class="main-text" id="reactionMainText">点击开始</div>
-            <div class="sub-text" id="reactionSubText">等待屏幕变色后快速点击</div>
-            <div class="stats">
-                <span>🕒 上次: <strong id="lastTime">--</strong> ms</span>
-                <span>📊 平均: <strong id="avgTime">--</strong> ms</span>
-                <span>📈 次数: <strong id="attemptCount">0</strong></span>
+        <!-- 基本信息 -->
+        <div class="info-grid">
+
+            <div class="info-card">
+                <div class="label">GAME</div>
+                <div class="value">
+                    <i class="fas fa-gamepad"></i>
+                    无畏契约手游
+                </div>
+            </div>
+
+            <div class="info-card">
+                <div class="label">TYPE</div>
+                <div class="value">
+                    <i class="fas fa-comments"></i>
+                    游戏交流群
+                </div>
+            </div>
+
+            <div class="info-card">
+                <div class="label">STATUS</div>
+                <div class="value">
+                    <i class="fas fa-circle"></i>
+                    正常活跃
+                </div>
+            </div>
+
+            <div class="info-card">
+                <div class="label">MODE</div>
+                <div class="value">
+                    <i class="fas fa-gamepad"></i>
+                    休闲 / 排位
+                </div>
+            </div>
+
+        </div>
+
+        <!-- 公告 -->
+        <div class="notice">
+            <div class="notice-title">
+                <i class="fas fa-bullhorn"></i>
+                群公告
+            </div>
+
+            <div class="notice-text">
+                欢迎新朋友加入 GG车队！
+                请先阅读群规，文明交流，理性游戏。
+                有问题可以直接在群里询问大家～
             </div>
         </div>
-    </div>
 
-    <!-- ============================================================ -->
-    <!-- ====== 游戏面板2：2048 ====== -->
-    <div class="game-overlay" id="game2048">
-        <button class="game-exit" onclick="closeGame('2048')"><i class="fas fa-times"></i></button>
-        <div class="game-title-bar">🟦 2048</div>
-        <div class="board-wrap">
-            <div class="score-row">
-                <span>🏆 得分: <strong id="score2048">0</strong></span>
-                <span style="cursor:pointer;background:#eef1f4;padding:4px 16px;border:1px solid #d5dce6;" onclick="reset2048()">🔄 重开</span>
-            </div>
-            <div class="grid-2048" id="grid2048"></div>
+        <!-- 群规 -->
+        <div class="section-title">
+            <i class="fas fa-shield-alt"></i>
+            群规
         </div>
-    </div>
 
-    <!-- ============================================================ -->
-    <!-- ====== 游戏面板3：扫雷 ====== -->
-    <div class="game-overlay" id="minesweeper">
-        <button class="game-exit" onclick="closeGame('minesweeper')"><i class="fas fa-times"></i></button>
-        <div class="game-title-bar">💣 扫雷</div>
-        <div class="ms-wrap">
-            <div class="ms-header">
-                <span>💣 <strong id="msMines">10</strong></span>
-                <span>🚩 <strong id="msFlags">0</strong></span>
-                <span style="cursor:pointer;background:#eef1f4;padding:4px 16px;border:1px solid #d5dce6;" onclick="resetMinesweeper()">🔄 重开</span>
+        <div class="rules-full">
+
+            <div class="rule-item">
+                <div class="rule-line">
+                    <span class="rule-num">1</span>
+                    <div class="rule-text">
+                        友好交流，禁止辱骂、恶意攻击群友。
+                    </div>
+                </div>
             </div>
-            <div class="ms-grid" id="msGrid"></div>
+
+            <div class="rule-item">
+                <div class="rule-line">
+                    <span class="rule-num">2</span>
+                    <div class="rule-text">
+                        禁止发布违法、违规或不良信息。
+                    </div>
+                </div>
+            </div>
+
+            <div class="rule-item">
+                <div class="rule-line">
+                    <span class="rule-num">3</span>
+                    <div class="rule-text">
+                        游戏可以整活，但不要影响其他群友正常游戏体验。
+                    </div>
+                </div>
+            </div>
+
+            <div class="rule-item">
+                <div class="rule-line">
+                    <span class="rule-num">4</span>
+                    <div class="rule-text">
+                        <span class="highlight">禁止恶意刷屏、广告轰炸。</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="rule-item">
+                <div class="rule-line">
+                    <span class="rule-num">5</span>
+                    <div class="rule-text">
+                        有矛盾先沟通，解决不了可以联系管理员。
+                    </div>
+                </div>
+            </div>
+
+            <div class="rule-item">
+                <div class="rule-line">
+                    <span class="rule-num">6</span>
+                    <div class="rule-text">
+                        进群后请查看群公告，了解最新活动与通知。
+                    </div>
+                </div>
+            </div>
+
         </div>
+
+        <!-- 加群 -->
+        <div class="section-title">
+            <i class="fas fa-user-plus"></i>
+            加入 GG车队
+        </div>
+
+        <div class="join-card">
+
+            <h3>🚗 欢迎加入我们</h3>
+
+            <p>
+                和群友一起开黑、聊天、上分！
+            </p>
+
+            <div class="qq-number" id="qqNumber">
+                GG车队
+            </div>
+
+            <br>
+
+            <button class="btn-primary"
+                    onclick="copyQQ()">
+                <i class="fas fa-copy"></i>
+                复制群号
+            </button>
+
+            <div style="margin-top:10px;color:#8a9aa8;font-size:12px;">
+                加群后请查看群公告获取更多信息喵～
+            </div>
+
+        </div>
+
+        <!-- 小游戏 -->
+        <div class="game-section">
+
+            <div class="game-title">
+                <i class="fas fa-gamepad"></i>
+                群友小游戏 · 三连玩
+            </div>
+
+            <div class="game-grid">
+
+                <div class="game-btn"
+                     onclick="openGame('reaction')">
+                    <span class="icon">⚡</span>
+                    <span class="name">反应测试</span>
+                    <span class="sub">测手速</span>
+                </div>
+
+                <div class="game-btn"
+                     onclick="openGame('2048')">
+                    <span class="icon">🟦</span>
+                    <span class="name">2048</span>
+                    <span class="sub">合成数字</span>
+                </div>
+
+                <div class="game-btn"
+                     onclick="openGame('minesweeper')">
+                    <span class="icon">💣</span>
+                    <span class="name">扫雷</span>
+                    <span class="sub">经典益智</span>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- 留言板 -->
+        <div class="message-board">
+
+            <div class="section-title">
+                <i class="fas fa-comment-dots"></i>
+                群友留言板
+            </div>
+
+            <div class="msg-input-area">
+
+                <input
+                    id="msgNick"
+                    maxlength="20"
+                    placeholder="昵称">
+
+                <textarea
+                    id="msgContent"
+                    maxlength="200"
+                    rows="1"
+                    placeholder="说点什么吧～"></textarea>
+
+                <button
+                    class="btn-send"
+                    onclick="sendMessage()">
+                    <i class="fas fa-paper-plane"></i>
+                    发送
+                </button>
+
+            </div>
+
+            <div class="msg-list" id="msgList">
+                <div style="
+                    text-align:center;
+                    color:#8a9aa8;
+                    padding:16px;
+                    font-size:13px;">
+                    正在加载留言……
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Footer -->
+        <footer id="pageFooter">
+            <div>
+                🚗 GG车队 · 无畏契约手游交流群
+            </div>
+
+            <div>
+                游戏只是娱乐，开心最重要 💙
+            </div>
+
+            <div style="margin-top:6px;">
+                © 2026 GG车队
+            </div>
+        </footer>
+
+    </div>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<!-- 七夕 / 活动弹窗 -->
+<div class="modal-overlay"
+     id="qixiOverlay"
+     onclick="handleModalBackground(event)">
+
+    <div class="modal">
+
+        <div class="icon">💙</div>
+
+        <div class="title">
+            GG车队欢迎你
+        </div>
+
+        <div class="body">
+            欢迎来到 GG车队！<br>
+            和群友一起游戏、聊天、整活、上分～
+        </div>
+
+        <button class="close"
+                onclick="closeQixi()">
+            知道啦
+        </button>
+
+    </div>
+</div>
+
+<!-- 云原神传送 -->
+<div class="portal-effect"
+     id="portalEffect">
+
+    <div class="portal-cloud">
+        ☁️
     </div>
 
-    <!-- ====== Toast ====== -->
-    <div id="toast" class="toast">✅ 群号已复制，去QQ搜索吧！</div>
+    <div class="portal-text">
+        🌌 传送至云原神 ...
+    </div>
 
-    <script>
-        // ======================== 七夕弹窗 ========================
-        function showQixiPopup() {
-            const today = new Date();
-            const month = today.getMonth() + 1;
-            const day = today.getDate();
-            if (month === 8 && day >= 19 && day <= 20) {
-                setTimeout(() => {
-                    document.getElementById('qixiOverlay').classList.add('active');
-                }, 400);
+</div>
+
+<!-- =========================
+     反应测试
+========================= -->
+
+<div class="game-overlay"
+     id="reactionGame">
+
+    <button class="game-exit"
+            onclick="closeGame('reaction')"
+            aria-label="退出">
+        <i class="fas fa-times"></i>
+    </button>
+
+    <div class="game-title-bar">
+        ⚡ 反应测试
+    </div>
+
+    <div class="reaction-area"
+         id="reactionArea"
+         onclick="handleReactionClick()">
+
+        <div class="main-text"
+             id="reactionMainText">
+            点击开始
+        </div>
+
+        <div class="sub-text"
+             id="reactionSubText">
+            等待屏幕变色后快速点击
+        </div>
+
+        <div class="stats">
+
+            <span>
+                🕒 上次:
+                <strong id="lastTime">--</strong>
+                ms
+            </span>
+
+            <span>
+                📊 平均:
+                <strong id="avgTime">--</strong>
+                ms
+            </span>
+
+            <span>
+                📈 次数:
+                <strong id="attemptCount">0</strong>
+            </span>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- =========================
+     2048
+========================= -->
+
+<div class="game-overlay"
+     id="game2048">
+
+    <button class="game-exit"
+            onclick="closeGame('2048')"
+            aria-label="退出">
+        <i class="fas fa-times"></i>
+    </button>
+
+    <div class="game-title-bar">
+        🟦 2048
+    </div>
+
+    <div class="board-wrap">
+
+        <div class="score-row">
+
+            <span>
+                🏆 得分:
+                <strong id="score2048">0</strong>
+            </span>
+
+            <span onclick="reset2048()">
+                🔄 重开
+            </span>
+
+        </div>
+
+        <div class="grid-2048"
+             id="grid2048"></div>
+
+    </div>
+
+</div>
+
+<!-- =========================
+     扫雷
+========================= -->
+
+<div class="game-overlay"
+     id="minesweeper">
+
+    <button class="game-exit"
+            onclick="closeGame('minesweeper')"
+            aria-label="退出">
+        <i class="fas fa-times"></i>
+    </button>
+
+    <div class="game-title-bar">
+        💣 扫雷
+    </div>
+
+    <div class="ms-wrap">
+
+        <div class="ms-header">
+
+            <span>
+                💣
+                <strong id="msMines">10</strong>
+            </span>
+
+            <span>
+                🚩
+                <strong id="msFlags">0</strong>
+            </span>
+
+            <span onclick="resetMinesweeper()">
+                🔄 重开
+            </span>
+
+        </div>
+
+        <div class="ms-grid"
+             id="msGrid"></div>
+
+    </div>
+
+</div>
+
+<script>
+/* =========================================================
+   基础工具
+========================================================= */
+
+let toastTimer = null;
+
+function showToastCustom(message) {
+
+    const toast = document.getElementById('toast');
+
+    toast.textContent = message;
+    toast.classList.add('show');
+
+    clearTimeout(toastTimer);
+
+    toastTimer = setTimeout(() => {
+        toast.classList.remove('show');
+    }, 2200);
+}
+
+
+/* =========================================================
+   复制
+========================================================= */
+
+async function copyQQ() {
+
+    /*
+     * 如果你有真实 QQ 群号，
+     * 把下面 GG车队 替换成你的群号即可。
+     */
+
+    const qq = 'GG车队';
+
+    try {
+
+        await navigator.clipboard.writeText(qq);
+
+        showToastCustom('📋 已复制：' + qq);
+
+    } catch (error) {
+
+        const textarea = document.createElement('textarea');
+
+        textarea.value = qq;
+        textarea.style.position = 'fixed';
+        textarea.style.opacity = '0';
+
+        document.body.appendChild(textarea);
+
+        textarea.select();
+
+        try {
+            document.execCommand('copy');
+            showToastCustom('📋 群号已复制');
+        } catch (e) {
+            showToastCustom('请手动复制：' + qq);
+        }
+
+        textarea.remove();
+    }
+}
+
+
+/* =========================================================
+   弹窗
+========================================================= */
+
+function showQixiPopup() {
+
+    const overlay = document.getElementById('qixiOverlay');
+
+    if (!overlay) return;
+
+    /*
+     * 当前版本不再显示过期的七夕活动。
+     * 如果以后需要重新启用活动弹窗，
+     * 可以在这里添加日期判断。
+     */
+}
+
+function closeQixi() {
+
+    const overlay = document.getElementById('qixiOverlay');
+
+    if (overlay) {
+        overlay.classList.remove('active');
+    }
+}
+
+function handleModalBackground(event) {
+
+    if (event.target.id === 'qixiOverlay') {
+        closeQixi();
+    }
+}
+
+
+/* =========================================================
+   云原神隐藏彩蛋
+========================================================= */
+
+let cloudClickCount = 0;
+
+const CLOUD_TARGET = 5;
+
+function cloudSecretClick() {
+
+    cloudClickCount++;
+
+    if (cloudClickCount >= CLOUD_TARGET) {
+
+        const portal =
+            document.getElementById('portalEffect');
+
+        const counter =
+            document.getElementById('cloudCounter');
+
+        if (portal) {
+            portal.classList.add('active');
+        }
+
+        setTimeout(() => {
+
+            window.location.href =
+                'https://ys.mihoyo.com/cloud/';
+
+        }, 1500);
+
+        cloudClickCount = 0;
+
+        if (counter) {
+            counter.textContent = '0';
+            counter.classList.remove('show');
+        }
+
+    } else {
+
+        const remain =
+            CLOUD_TARGET - cloudClickCount;
+
+        showToastCustom(
+            `☁️ 再点 ${remain} 次传送到云原神...`
+        );
+    }
+}
+
+
+/* =========================================================
+   Footer 隐藏彩蛋
+========================================================= */
+
+let footerClickCount = 0;
+
+if (document.getElementById('pageFooter')) {
+
+    document
+        .getElementById('pageFooter')
+        .addEventListener('click', () => {
+
+            footerClickCount++;
+
+            if (footerClickCount >= 5) {
+
+                footerClickCount = 0;
+
+                showToastCustom(
+                    '🎉 你发现隐藏彩蛋啦！GG车队欢迎你！'
+                );
             }
-        }
 
-        function closeQixi() {
-            document.getElementById('qixiOverlay').classList.remove('active');
-        }
-
-        // ======================== 核心配置 ========================
-        const QQ_GROUP = '775985819';
-        document.getElementById('groupNumber').innerText = QQ_GROUP;
-
-        // ======================== 复制功能 ========================
-        function copyQQ() {
-            const qq = document.getElementById('groupNumber').innerText;
-            if (navigator.clipboard && navigator.clipboard.writeText) {
-                navigator.clipboard.writeText(qq).then(() => showToast()).catch(() => fallbackCopy(qq));
-            } else {
-                fallbackCopy(qq);
-            }
-        }
-
-        function fallbackCopy(text) {
-            const textarea = document.createElement('textarea');
-            textarea.value = text;
-            textarea.style.position = 'fixed';
-            textarea.style.opacity = '0';
-            document.body.appendChild(textarea);
-            textarea.select();
-            try {
-                document.execCommand('copy');
-                showToast();
-            } catch (err) {
-                alert('复制失败，请手动复制：' + text);
-            }
-            document.body.removeChild(textarea);
-        }
-
-        function showToast() {
-            const toast = document.getElementById('toast');
-            toast.classList.add('show');
-            clearTimeout(toast._timer);
-            toast._timer = setTimeout(() => {
-                toast.classList.remove('show');
-                toast.textContent = '✅ 群号已复制，去QQ搜索吧！';
-            }, 2000);
-        }
-
-        function showToastCustom(msg) {
-            const toast = document.getElementById('toast');
-            toast.textContent = msg;
-            toast.classList.add('show');
-            clearTimeout(toast._timer);
-            toast._timer = setTimeout(() => {
-                toast.classList.remove('show');
-                toast.textContent = '✅ 群号已复制，去QQ搜索吧！';
-            }, 3000);
-        }
-
-        // ======================== 运势 ========================
-        const fortunes = [
-            '🌟 今天手感火热，大胆对枪，MVP在向你招手！',
-            '🔥 适合打狙，冷静瞄准，一发入魂！',
-            '💪 队友给力，配合默契，连胜走起！',
-            '😅 建议先练练枪，今天可能有点马。',
-            '🎯 适合玩哨兵，架点偷人，稳稳拿下。',
-            '⚡ 今天运气爆棚，盲射都能爆头！',
-            '🧘 心态放平，队友失误别慌，你是大哥。',
-            '🎮 试试新英雄，可能会有奇效。',
-            '🐱 今天适合快乐游戏，输赢无所谓！',
-            '💀 白给了也没关系，下次一定！',
-        ];
-
-        function showFortune() {
-            const box = document.getElementById('fortuneBox');
-            const idx = Math.floor(Math.random() * fortunes.length);
-            let msg = fortunes[idx];
-            if (Math.random() < 0.15) {
-                msg = '🎊 哇！你触发了稀有运势！今天 GG 车队全员上大分！ 🎊';
-            }
-            box.innerHTML = msg;
-            box.style.transform = 'scale(0.95)';
-            setTimeout(() => { box.style.transform = 'scale(1)'; }, 150);
-        }
-
-        // ======================== 页脚彩蛋 ========================
-        let clickCount = 0;
-        document.getElementById('footerTrigger').addEventListener('click', function(e) {
-            clickCount++;
-            if (clickCount === 5) {
-                document.getElementById('easterEgg').classList.add('show');
-                clickCount = 0;
-                showToastCustom('🎉 彩蛋触发！愿你每一发都是爆头！');
-                const footerP = document.querySelector('.footer p:last-child');
-                if (footerP) footerP.innerHTML = '✨ 彩蛋已解锁！继续探索吧 ✨';
-            } else {
-                const remain = 5 - clickCount;
-                const footerP = document.querySelector('.footer p:last-child');
-                if (footerP) {
-                    footerP.innerHTML = `✨ 再点 ${remain} 次触发隐藏彩蛋 ✨`;
-                }
-            }
         });
 
-        // ======================== 云彩蛋 ========================
-        let cloudClickCount = 0;
-        const CLOUD_TARGET = 5;
+}
 
-        function handleCloudClick() {
-            cloudClickCount++;
-            const counter = document.getElementById('cloudCounter');
-            counter.textContent = cloudClickCount;
-            counter.classList.add('show');
-            const cloud = document.querySelector('.cloud-egg');
-            cloud.style.transform = 'scale(0.85)';
-            setTimeout(() => { cloud.style.transform = ''; }, 200);
-            if (navigator.vibrate) navigator.vibrate(10);
-            if (cloudClickCount >= CLOUD_TARGET) {
-                document.getElementById('portalEffect').classList.add('active');
-                setTimeout(() => {
-                    window.location.href = 'https://ys.mihoyo.com/cloud/';
-                }, 1500);
-                cloudClickCount = 0;
-                counter.textContent = '0';
-                counter.classList.remove('show');
-            } else {
-                const remain = CLOUD_TARGET - cloudClickCount;
-                showToastCustom(`☁️ 再点 ${remain} 次传送到云原神...`);
+
+/* =========================================================
+   游戏统一开关
+========================================================= */
+
+function openGame(type) {
+
+    document.getElementById('mainPage').style.display = 'none';
+
+    if (type === 'reaction') {
+
+        document
+            .getElementById('reactionGame')
+            .classList.add('active');
+
+        initReactionGame();
+
+    } else if (type === '2048') {
+
+        document
+            .getElementById('game2048')
+            .classList.add('active');
+
+        init2048();
+
+    } else if (type === 'minesweeper') {
+
+        document
+            .getElementById('minesweeper')
+            .classList.add('active');
+
+        initMinesweeper();
+    }
+}
+
+
+function closeGame(type) {
+
+    document.getElementById('mainPage').style.display = 'block';
+
+    if (type === 'reaction') {
+
+        document
+            .getElementById('reactionGame')
+            .classList.remove('active');
+
+        clearTimeout(reactionTimeout);
+
+        reactionState = 'idle';
+
+        document.getElementById('reactionArea')
+            .style.background = '#f5f7fa';
+
+        document.getElementById('reactionMainText')
+            .textContent = '点击开始';
+
+        document.getElementById('reactionSubText')
+            .textContent = '等待屏幕变色后快速点击';
+
+    } else if (type === '2048') {
+
+        document
+            .getElementById('game2048')
+            .classList.remove('active');
+
+    } else if (type === 'minesweeper') {
+
+        document
+            .getElementById('minesweeper')
+            .classList.remove('active');
+    }
+}
+
+
+/* =========================================================
+   反应测试
+========================================================= */
+
+let reactionState = 'idle';
+let reactionTimeout = null;
+let startTime = 0;
+let lastTime = 0;
+let totalTime = 0;
+let attemptCount = 0;
+
+
+function initReactionGame() {
+
+    reactionState = 'idle';
+
+    lastTime = 0;
+    totalTime = 0;
+    attemptCount = 0;
+
+    document.getElementById('lastTime')
+        .textContent = '--';
+
+    document.getElementById('avgTime')
+        .textContent = '--';
+
+    document.getElementById('attemptCount')
+        .textContent = '0';
+
+    document.getElementById('reactionArea')
+        .style.background = '#f5f7fa';
+
+    document.getElementById('reactionMainText')
+        .textContent = '点击开始';
+
+    document.getElementById('reactionSubText')
+        .textContent = '等待屏幕变色后快速点击';
+
+    clearTimeout(reactionTimeout);
+}
+
+
+function handleReactionClick() {
+
+    const area =
+        document.getElementById('reactionArea');
+
+    const mainText =
+        document.getElementById('reactionMainText');
+
+    const subText =
+        document.getElementById('reactionSubText');
+
+
+    if (reactionState === 'idle') {
+
+        reactionState = 'waiting';
+
+        area.style.background = '#e8f0fe';
+
+        mainText.textContent = '等待...';
+
+        subText.textContent =
+            '屏幕变绿时点击！';
+
+        const delay =
+            1000 + Math.random() * 3000;
+
+        reactionTimeout = setTimeout(() => {
+
+            reactionState = 'ready';
+
+            area.style.background = '#43a047';
+
+            mainText.textContent =
+                '点击！';
+
+            subText.textContent =
+                '快快快！';
+
+            startTime = performance.now();
+
+        }, delay);
+
+        return;
+    }
+
+
+    if (reactionState === 'waiting') {
+
+        clearTimeout(reactionTimeout);
+
+        reactionState = 'idle';
+
+        area.style.background = '#ffcdd2';
+
+        mainText.textContent =
+            '太早了！';
+
+        subText.textContent =
+            '不要抢跑，点击重新开始';
+
+        return;
+    }
+
+
+    if (reactionState === 'ready') {
+
+        const reactionTime =
+            Math.round(performance.now() - startTime);
+
+        lastTime = reactionTime;
+
+        totalTime += reactionTime;
+
+        attemptCount++;
+
+        const average =
+            Math.round(totalTime / attemptCount);
+
+        document.getElementById('lastTime')
+            .textContent = lastTime;
+
+        document.getElementById('avgTime')
+            .textContent = average;
+
+        document.getElementById('attemptCount')
+            .textContent = attemptCount;
+
+        reactionState = 'idle';
+
+        area.style.background = '#e8f0fe';
+
+        mainText.textContent =
+            reactionTime + ' ms';
+
+        subText.textContent =
+            '点击继续挑战';
+
+        if (reactionTime < 200) {
+            showToastCustom('⚡ 反应神速！');
+        } else if (reactionTime < 300) {
+            showToastCustom('🔥 很快！');
+        }
+    }
+}
+
+
+/* =========================================================
+   2048
+========================================================= */
+
+let board2048 = [];
+let score2048 = 0;
+let touchStartX = 0;
+let touchStartY = 0;
+
+
+function init2048() {
+
+    reset2048();
+
+    const grid =
+        document.getElementById('grid2048');
+
+    grid.onkeydown = null;
+
+    grid.addEventListener(
+        'touchstart',
+        handle2048TouchStart,
+        { passive: true }
+    );
+
+    grid.addEventListener(
+        'touchend',
+        handle2048TouchEnd,
+        { passive: true }
+    );
+}
+
+
+function reset2048() {
+
+    board2048 =
+        Array.from(
+            { length: 4 },
+            () => Array(4).fill(0)
+        );
+
+    score2048 = 0;
+
+    add2048Tile();
+    add2048Tile();
+
+    render2048();
+}
+
+
+function add2048Tile() {
+
+    const empty = [];
+
+    for (let r = 0; r < 4; r++) {
+        for (let c = 0; c < 4; c++) {
+
+            if (board2048[r][c] === 0) {
+                empty.push([r, c]);
+            }
+        }
+    }
+
+    if (!empty.length) return;
+
+    const [r, c] =
+        empty[Math.floor(Math.random() * empty.length)];
+
+    board2048[r][c] =
+        Math.random() < .9 ? 2 : 4;
+}
+
+
+function render2048() {
+
+    const grid =
+        document.getElementById('grid2048');
+
+    grid.innerHTML = '';
+
+    document.getElementById('score2048')
+        .textContent = score2048;
+
+    for (let r = 0; r < 4; r++) {
+
+        for (let c = 0; c < 4; c++) {
+
+            const cell =
+                document.createElement('div');
+
+            cell.className = 'tile-2048';
+
+            const value =
+                board2048[r][c];
+
+            cell.textContent =
+                value || '';
+
+            if (value) {
+
+                cell.style.background =
+                    value >= 128
+                        ? '#b8cdf0'
+                        : '#d2e3fc';
+
+                cell.style.color =
+                    '#1a2332';
+            }
+
+            grid.appendChild(cell);
+        }
+    }
+}
+
+
+function slide2048(row) {
+
+    const values =
+        row.filter(value => value !== 0);
+
+    const result = [];
+
+    for (let i = 0; i < values.length; i++) {
+
+        if (
+            values[i] === values[i + 1]
+        ) {
+
+            const merged =
+                values[i] * 2;
+
+            result.push(merged);
+
+            score2048 += merged;
+
+            i++;
+
+        } else {
+
+            result.push(values[i]);
+        }
+    }
+
+    while (result.length < 4) {
+        result.push(0);
+    }
+
+    return result;
+}
+
+
+function move2048(direction) {
+
+    const old =
+        JSON.stringify(board2048);
+
+
+    if (direction === 'left') {
+
+        for (let r = 0; r < 4; r++) {
+            board2048[r] =
+                slide2048(board2048[r]);
+        }
+
+    } else if (direction === 'right') {
+
+        for (let r = 0; r < 4; r++) {
+
+            board2048[r] =
+                slide2048(
+                    board2048[r].slice().reverse()
+                ).reverse();
+        }
+
+    } else if (direction === 'up') {
+
+        for (let c = 0; c < 4; c++) {
+
+            const column =
+                board2048.map(row => row[c]);
+
+            const result =
+                slide2048(column);
+
+            for (let r = 0; r < 4; r++) {
+                board2048[r][c] =
+                    result[r];
             }
         }
 
-        // ======================== 游戏统一开关 ========================
-        function openGame(type) {
-            document.getElementById('mainPage').style.display = 'none';
-            if (type === 'reaction') {
-                document.getElementById('reactionGame').classList.add('active');
-                initReactionGame();
-            } else if (type === '2048') {
-                document.getElementById('game2048').classList.add('active');
-                init2048();
-            } else if (type === 'minesweeper') {
-                document.getElementById('minesweeper').classList.add('active');
-                initMinesweeper();
+    } else if (direction === 'down') {
+
+        for (let c = 0; c < 4; c++) {
+
+            const column =
+                board2048.map(row => row[c])
+                    .reverse();
+
+            const result =
+                slide2048(column)
+                    .reverse();
+
+            for (let r = 0; r < 4; r++) {
+                board2048[r][c] =
+                    result[r];
             }
         }
+    }
 
-        function closeGame(type) {
-            document.getElementById('mainPage').style.display = 'block';
-            if (type === 'reaction') {
-                document.getElementById('reactionGame').classList.remove('active');
-                clearTimeout(reactionTimeout);
-                reactionState = 'idle';
-                document.getElementById('reactionArea').style.background = '#f5f7fa';
-                document.getElementById('reactionMainText').textContent = '点击开始';
-                document.getElementById('reactionSubText').textContent = '等待屏幕变色后快速点击';
-            } else if (type === '2048') {
-                document.getElementById('game2048').classList.remove('active');
-            } else if (type === 'minesweeper') {
-                document.getElementById('minesweeper').classList.remove('active');
+
+    const changed =
+        JSON.stringify(board2048) !== old;
+
+    if (changed) {
+
+        add2048Tile();
+
+        render2048();
+
+        if (check2048GameOver()) {
+
+            showToastCustom(
+                '💀 游戏结束！点击重开再来一局'
+            );
+        }
+    }
+}
+
+
+function check2048GameOver() {
+
+    for (let r = 0; r < 4; r++) {
+
+        for (let c = 0; c < 4; c++) {
+
+            if (board2048[r][c] === 0) {
+                return false;
+            }
+
+            if (
+                c < 3 &&
+                board2048[r][c] === board2048[r][c + 1]
+            ) {
+                return false;
+            }
+
+            if (
+                r < 3 &&
+                board2048[r][c] === board2048[r + 1][c]
+            ) {
+                return false;
             }
         }
+    }
 
-        // ======================== 反应测试 ========================
-        let reactionState = 'idle';
-        let reactionTimeout = null;
-        let startTime = 0;
-        let lastTime = 0;
-        let totalTime = 0;
-        let attemptCount = 0;
+    return true;
+}
 
-        function initReactionGame() {
-            reactionState = 'idle';
-            lastTime = 0;
-            totalTime = 0;
-            attemptCount = 0;
-            document.getElementById('lastTime').textContent = '--';
-            document.getElementById('avgTime').textContent = '--';
-            document.getElementById('attemptCount').textContent = '0';
-            document.getElementById('reactionArea').style.background = '#f5f7fa';
-            document.getElementById('reactionMainText').textContent = '点击开始';
-            document.getElementById('reactionSubText').textContent = '等待屏幕变色后快速点击';
-            clearTimeout(reactionTimeout);
+
+function handle2048TouchStart(event) {
+
+    const touch = event.changedTouches[0];
+
+    touchStartX = touch.clientX;
+    touchStartY = touch.clientY;
+}
+
+
+function handle2048TouchEnd(event) {
+
+    const touch = event.changedTouches[0];
+
+    const dx =
+        touch.clientX - touchStartX;
+
+    const dy =
+        touch.clientY - touchStartY;
+
+    if (
+        Math.abs(dx) < 25 &&
+        Math.abs(dy) < 25
+    ) {
+        return;
+    }
+
+    if (Math.abs(dx) > Math.abs(dy)) {
+
+        move2048(
+            dx > 0 ? 'right' : 'left'
+        );
+
+    } else {
+
+        move2048(
+            dy > 0 ? 'down' : 'up'
+        );
+    }
+}
+
+
+document.addEventListener('keydown', event => {
+
+    const game =
+        document.getElementById('game2048');
+
+    if (!game.classList.contains('active')) {
+        return;
+    }
+
+    const map = {
+        ArrowLeft: 'left',
+        ArrowRight: 'right',
+        ArrowUp: 'up',
+        ArrowDown: 'down'
+    };
+
+    if (map[event.key]) {
+
+        event.preventDefault();
+
+        move2048(map[event.key]);
+    }
+});
+
+
+/* =========================================================
+   扫雷
+========================================================= */
+
+let msRows = 9;
+let msCols = 9;
+let msMines = 10;
+
+let msBoard = [];
+let msRevealed = [];
+let msFlagged = [];
+
+let msGameOver = false;
+let msFirstClick = true;
+
+
+function initMinesweeper() {
+    resetMinesweeper();
+}
+
+
+function resetMinesweeper() {
+
+    msGameOver = false;
+    msFirstClick = true;
+
+    msBoard =
+        Array.from(
+            { length: msRows },
+            () => Array(msCols).fill(0)
+        );
+
+    msRevealed =
+        Array.from(
+            { length: msRows },
+            () => Array(msCols).fill(false)
+        );
+
+    msFlagged =
+        Array.from(
+            { length: msRows },
+            () => Array(msCols).fill(false)
+        );
+
+    document.getElementById('msMines')
+        .textContent = msMines;
+
+    document.getElementById('msFlags')
+        .textContent = '0';
+
+    renderMinesweeper();
+}
+
+
+function placeMines(firstR, firstC) {
+
+    let minesPlaced = 0;
+
+    while (minesPlaced < msMines) {
+
+        const r =
+            Math.floor(Math.random() * msRows);
+
+        const c =
+            Math.floor(Math.random() * msCols);
+
+        if (
+            msBoard[r][c] === -1 ||
+            (
+                Math.abs(r - firstR) <= 1 &&
+                Math.abs(c - firstC) <= 1
+            )
+        ) {
+            continue;
         }
 
-        function handleReactionClick() {
-            const area = document.getElementById('reactionArea');
-            const mainText = document.getElementById('reactionMainText');
-            const subText = document.getElementById('reactionSubText');
+        msBoard[r][c] = -1;
 
-            if (reactionState === 'idle') {
-                reactionState = 'waiting';
-                area.style.background = '#e8f0fe';
-                mainText.textContent = '等待...';
-                subText.textContent = '屏幕变绿时点击！';
-                const delay = 1000 + Math.random() * 3000;
-                reactionTimeout = setTimeout(() => {
-                    reactionState = 'ready';
-                    area.style.background = '#43a047';
-                    mainText.textContent = '点击！';
-                    subText.textContent = '快！';
-                    startTime = performance.now();
-                }, delay);
-            } else if (reactionState === 'ready') {
-                const endTime = performance.now();
-                const reaction = Math.round(endTime - startTime);
-                lastTime = reaction;
-                totalTime += reaction;
-                attemptCount++;
-                const avg = Math.round(totalTime / attemptCount);
-                document.getElementById('lastTime').textContent = lastTime;
-                document.getElementById('avgTime').textContent = avg;
-                document.getElementById('attemptCount').textContent = attemptCount;
-                reactionState = 'idle';
-                area.style.background = '#f5f7fa';
-                mainText.textContent = '点击继续';
-                subText.textContent = `上次 ${lastTime} ms · 平均 ${avg} ms`;
-                clearTimeout(reactionTimeout);
-            } else {
-                clearTimeout(reactionTimeout);
-                reactionState = 'idle';
-                area.style.background = '#e53935';
-                mainText.textContent = '太急了！';
-                subText.textContent = '等待变绿再点击，再试一次';
-                setTimeout(() => {
-                    area.style.background = '#f5f7fa';
-                    mainText.textContent = '点击开始';
-                    subText.textContent = '等待屏幕变色后快速点击';
-                }, 1000);
-            }
-        }
+        minesPlaced++;
+    }
 
-        // ======================== 2048 ========================
-        let board2048 = [];
-        let score2048 = 0;
-        const SIZE = 4;
+    for (let r = 0; r < msRows; r++) {
 
-        function init2048() {
-            score2048 = 0;
-            document.getElementById('score2048').textContent = '0';
-            board2048 = Array.from({ length: SIZE }, () => Array(SIZE).fill(0));
-            addRandomTile();
-            addRandomTile();
-            render2048();
-            document.addEventListener('keydown', handleKey2048);
-        }
+        for (let c = 0; c < msCols; c++) {
 
-        function reset2048() {
-            board2048 = Array.from({ length: SIZE }, () => Array(SIZE).fill(0));
-            score2048 = 0;
-            document.getElementById('score2048').textContent = '0';
-            addRandomTile();
-            addRandomTile();
-            render2048();
-            showToastCustom('🔄 已重置 2048');
-        }
-
-        function addRandomTile() {
-            const empty = [];
-            for (let r = 0; r < SIZE; r++) {
-                for (let c = 0; c < SIZE; c++) {
-                    if (board2048[r][c] === 0) empty.push({ r, c });
-                }
-            }
-            if (empty.length === 0) return;
-            const idx = Math.floor(Math.random() * empty.length);
-            const { r, c } = empty[idx];
-            board2048[r][c] = Math.random() < 0.9 ? 2 : 4;
-        }
-
-        function render2048() {
-            const grid = document.getElementById('grid2048');
-            grid.innerHTML = '';
-            for (let r = 0; r < SIZE; r++) {
-                for (let c = 0; c < SIZE; c++) {
-                    const cell = document.createElement('div');
-                    cell.className = 'cell';
-                    const val = board2048[r][c];
-                    if (val > 0) {
-                        cell.textContent = val;
-                        cell.dataset.val = val;
-                    } else {
-                        cell.dataset.val = '0';
-                    }
-                    grid.appendChild(cell);
-                }
-            }
-            document.getElementById('score2048').textContent = score2048;
-        }
-
-        function handleKey2048(e) {
-            if (!document.getElementById('game2048').classList.contains('active')) return;
-            const key = e.key;
-            let moved = false;
-            if (key === 'ArrowUp') moved = moveUp();
-            else if (key === 'ArrowDown') moved = moveDown();
-            else if (key === 'ArrowLeft') moved = moveLeft();
-            else if (key === 'ArrowRight') moved = moveRight();
-            else return;
-            e.preventDefault();
-            if (moved) {
-                addRandomTile();
-                render2048();
-                if (checkGameOver()) {
-                    showToastCustom('💀 游戏结束！得分: ' + score2048);
-                }
-            }
-        }
-
-        function slideRow(row) {
-            let arr = row.filter(v => v !== 0);
-            let newArr = [];
-            let i = 0;
-            let sc = 0;
-            while (i < arr.length) {
-                if (i + 1 < arr.length && arr[i] === arr[i + 1]) {
-                    newArr.push(arr[i] * 2);
-                    sc += arr[i] * 2;
-                    i += 2;
-                } else {
-                    newArr.push(arr[i]);
-                    i++;
-                }
-            }
-            while (newArr.length < SIZE) newArr.push(0);
-            return { row: newArr, score: sc };
-        }
-
-        function moveLeft() {
-            let moved = false;
-            let totalSc = 0;
-            for (let r = 0; r < SIZE; r++) {
-                const { row, score } = slideRow(board2048[r]);
-                if (row.join(',') !== board2048[r].join(',')) moved = true;
-                board2048[r] = row;
-                totalSc += score;
-            }
-            score2048 += totalSc;
-            return moved;
-        }
-
-        function moveRight() {
-            let moved = false;
-            let totalSc = 0;
-            for (let r = 0; r < SIZE; r++) {
-                const reversed = [...board2048[r]].reverse();
-                const { row, score } = slideRow(reversed);
-                const newRow = row.reverse();
-                if (newRow.join(',') !== board2048[r].join(',')) moved = true;
-                board2048[r] = newRow;
-                totalSc += score;
-            }
-            score2048 += totalSc;
-            return moved;
-        }
-
-        function moveUp() {
-            let moved = false;
-            let totalSc = 0;
-            for (let c = 0; c < SIZE; c++) {
-                const col = board2048.map(row => row[c]);
-                const { row, score } = slideRow(col);
-                const newCol = row;
-                for (let r = 0; r < SIZE; r++) {
-                    if (board2048[r][c] !== newCol[r]) moved = true;
-                    board2048[r][c] = newCol[r];
-                }
-                totalSc += score;
-            }
-            score2048 += totalSc;
-            return moved;
-        }
-
-        function moveDown() {
-            let moved = false;
-            let totalSc = 0;
-            for (let c = 0; c < SIZE; c++) {
-                const col = board2048.map(row => row[c]).reverse();
-                const { row, score } = slideRow(col);
-                const newCol = row.reverse();
-                for (let r = 0; r < SIZE; r++) {
-                    if (board2048[r][c] !== newCol[r]) moved = true;
-                    board2048[r][c] = newCol[r];
-                }
-                totalSc += score;
-            }
-            score2048 += totalSc;
-            return moved;
-        }
-
-        function checkGameOver() {
-            for (let r = 0; r < SIZE; r++) {
-                for (let c = 0; c < SIZE; c++) {
-                    if (board2048[r][c] === 0) return false;
-                    if (r < SIZE - 1 && board2048[r][c] === board2048[r + 1][c]) return false;
-                    if (c < SIZE - 1 && board2048[r][c] === board2048[r][c + 1]) return false;
-                }
-            }
-            return true;
-        }
-
-        let touchStartX = 0,
-            touchStartY = 0;
-        document.addEventListener('touchstart', function(e) {
-            const touch = e.touches[0];
-            touchStartX = touch.clientX;
-            touchStartY = touch.clientY;
-        }, { passive: true });
-
-        document.addEventListener('touchmove', function(e) {
-            if (!document.getElementById('game2048').classList.contains('active')) return;
-            e.preventDefault();
-        }, { passive: false });
-
-        document.addEventListener('touchend', function(e) {
-            if (!document.getElementById('game2048').classList.contains('active')) return;
-            const touch = e.changedTouches[0];
-            const dx = touch.clientX - touchStartX;
-            const dy = touch.clientY - touchStartY;
-            if (Math.abs(dx) < 20 && Math.abs(dy) < 20) return;
-            let moved = false;
-            if (Math.abs(dx) > Math.abs(dy)) {
-                if (dx > 0) moved = moveRight();
-                else moved = moveLeft();
-            } else {
-                if (dy > 0) moved = moveDown();
-                else moved = moveUp();
-            }
-            if (moved) {
-                addRandomTile();
-                render2048();
-                if (checkGameOver()) {
-                    showToastCustom('💀 游戏结束！得分: ' + score2048);
-                }
-            }
-        }, { passive: true });
-
-        // ======================== 扫雷 ========================
-        let msBoard = [];
-        let msRevealed = [];
-        let msFlagged = [];
-        let msRows = 9,
-            msCols = 9,
-            msMines = 10;
-        let msFirstClick = true;
-        let msGameOver = false;
-
-        function initMinesweeper() {
-            msRows = 9;
-            msCols = 9;
-            msMines = 10;
-            msFirstClick = true;
-            msGameOver = false;
-            document.getElementById('msMines').textContent = msMines;
-            document.getElementById('msFlags').textContent = '0';
-            msBoard = Array.from({ length: msRows }, () => Array(msCols).fill(0));
-            msRevealed = Array.from({ length: msRows }, () => Array(msCols).fill(false));
-            msFlagged = Array.from({ length: msRows }, () => Array(msCols).fill(false));
-            renderMinesweeper();
-        }
-
-        function resetMinesweeper() {
-            initMinesweeper();
-            showToastCustom('🔄 已重置扫雷');
-        }
-
-        function placeMines(excludeR, excludeC) {
-            let placed = 0;
-            while (placed < msMines) {
-                const r = Math.floor(Math.random() * msRows);
-                const c = Math.floor(Math.random() * msCols);
-                if (msBoard[r][c] === -1) continue;
-                if (Math.abs(r - excludeR) <= 1 && Math.abs(c - excludeC) <= 1) continue;
-                msBoard[r][c] = -1;
-                placed++;
-            }
-            for (let r = 0; r < msRows; r++) {
-                for (let c = 0; c < msCols; c++) {
-                    if (msBoard[r][c] === -1) continue;
-                    let count = 0;
-                    for (let dr = -1; dr <= 1; dr++) {
-                        for (let dc = -1; dc <= 1; dc++) {
-                            const nr = r + dr,
-                                nc = c + dc;
-                            if (nr >= 0 && nr < msRows && nc >= 0 && nc < msCols && msBoard[nr][nc] === -1) count++;
-                        }
-                    }
-                    msBoard[r][c] = count;
-                }
-            }
-        }
-
-        function renderMinesweeper() {
-            const grid = document.getElementById('msGrid');
-            grid.style.gridTemplateColumns = `repeat(${msCols}, 1fr)`;
-            grid.innerHTML = '';
-            let flagCount = 0;
-            for (let r = 0; r < msRows; r++) {
-                for (let c = 0; c < msCols; c++) {
-                    const cell = document.createElement('div');
-                    cell.className = 'ms-cell';
-                    cell.dataset.r = r;
-                    cell.dataset.c = c;
-                    if (msRevealed[r][c]) {
-                        cell.classList.add('revealed');
-                        const val = msBoard[r][c];
-                        if (val === -1) {
-                            cell.textContent = '💣';
-                            cell.classList.add('mine-exploded');
-                        } else if (val > 0) {
-                            cell.textContent = val;
-                            cell.className += ' num-' + val;
-                        }
-                    } else {
-                        if (msFlagged[r][c]) {
-                            cell.textContent = '🚩';
-                            cell.classList.add('flagged');
-                            flagCount++;
-                        } else {
-                            cell.textContent = '';
-                        }
-                    }
-                    cell.addEventListener('click', function(e) {
-                        e.stopPropagation();
-                        const rr = parseInt(this.dataset.r);
-                        const cc = parseInt(this.dataset.c);
-                        if (msGameOver) return;
-                        revealCell(rr, cc);
-                    });
-                    cell.addEventListener('contextmenu', function(e) {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        const rr = parseInt(this.dataset.r);
-                        const cc = parseInt(this.dataset.c);
-                        if (msGameOver) return;
-                        if (msRevealed[rr][cc]) return;
-                        msFlagged[rr][cc] = !msFlagged[rr][cc];
-                        renderMinesweeper();
-                        updateFlagCount();
-                    });
-                    let longPressTimer = null;
-                    cell.addEventListener('touchstart', function(e) {
-                        longPressTimer = setTimeout(() => {
-                            e.preventDefault();
-                            const rr = parseInt(this.dataset.r);
-                            const cc = parseInt(this.dataset.c);
-                            if (msGameOver) return;
-                            if (msRevealed[rr][cc]) return;
-                            msFlagged[rr][cc] = !msFlagged[rr][cc];
-                            renderMinesweeper();
-                            updateFlagCount();
-                            if (navigator.vibrate) navigator.vibrate(20);
-                        }, 500);
-                    });
-                    cell.addEventListener('touchend', function(e) {
-                        clearTimeout(longPressTimer);
-                    });
-                    cell.addEventListener('touchmove', function(e) {
-                        clearTimeout(longPressTimer);
-                    });
-                    grid.appendChild(cell);
-                }
-            }
-            document.getElementById('msFlags').textContent = flagCount;
-        }
-
-        function updateFlagCount() {
-            let count = 0;
-            for (let r = 0; r < msRows; r++) {
-                for (let c = 0; c < msCols; c++) {
-                    if (msFlagged[r][c]) count++;
-                }
-            }
-            document.getElementById('msFlags').textContent = count;
-        }
-
-        function revealCell(r, c) {
-            if (msRevealed[r][c] || msFlagged[r][c]) return;
-            if (msFirstClick) {
-                placeMines(r, c);
-                msFirstClick = false;
-            }
             if (msBoard[r][c] === -1) {
-                msRevealed[r][c] = true;
-                msGameOver = true;
-                renderMinesweeper();
-                for (let rr = 0; rr < msRows; rr++) {
-                    for (let cc = 0; cc < msCols; cc++) {
-                        if (msBoard[rr][cc] === -1 && !msRevealed[rr][cc]) {
-                            msRevealed[rr][cc] = true;
-                        }
-                    }
-                }
-                renderMinesweeper();
-                showToastCustom('💥 踩雷了！游戏结束');
-                return;
+                continue;
             }
-            msRevealed[r][c] = true;
-            if (msBoard[r][c] === 0) {
-                for (let dr = -1; dr <= 1; dr++) {
-                    for (let dc = -1; dc <= 1; dc++) {
-                        const nr = r + dr,
-                            nc = c + dc;
-                        if (nr >= 0 && nr < msRows && nc >= 0 && nc < msCols && !msRevealed[nr][nc] && !msFlagged[nr][nc]) {
-                            revealCell(nr, nc);
-                        }
+
+            let count = 0;
+
+            for (let dr = -1; dr <= 1; dr++) {
+
+                for (let dc = -1; dc <= 1; dc++) {
+
+                    const nr = r + dr;
+                    const nc = c + dc;
+
+                    if (
+                        nr >= 0 &&
+                        nr < msRows &&
+                        nc >= 0 &&
+                        nc < msCols &&
+                        msBoard[nr][nc] === -1
+                    ) {
+                        count++;
                     }
                 }
             }
-            renderMinesweeper();
-            checkWin();
-        }
 
-        function checkWin() {
-            let total = msRows * msCols;
-            let revealed = 0;
-            for (let r = 0; r < msRows; r++) {
-                for (let c = 0; c < msCols; c++) {
-                    if (msRevealed[r][c]) revealed++;
+            msBoard[r][c] = count;
+        }
+    }
+}
+
+
+function renderMinesweeper() {
+
+    const grid =
+        document.getElementById('msGrid');
+
+    grid.innerHTML = '';
+
+    for (let r = 0; r < msRows; r++) {
+
+        for (let c = 0; c < msCols; c++) {
+
+            const cell =
+                document.createElement('div');
+
+            cell.className = 'ms-cell';
+
+            cell.dataset.r = r;
+            cell.dataset.c = c;
+
+            if (msRevealed[r][c]) {
+
+                cell.classList.add('revealed');
+
+                if (msBoard[r][c] === -1) {
+
+                    cell.classList.add('mine');
+
+                    cell.textContent = '💣';
+
+                } else if (msBoard[r][c] > 0) {
+
+                    cell.textContent =
+                        msBoard[r][c];
+                }
+
+            } else if (msFlagged[r][c]) {
+
+                cell.textContent = '🚩';
+            }
+
+
+            cell.addEventListener(
+                'click',
+                function(event) {
+
+                    event.stopPropagation();
+
+                    const rr =
+                        parseInt(this.dataset.r);
+
+                    const cc =
+                        parseInt(this.dataset.c);
+
+                    if (msGameOver) return;
+
+                    revealCell(rr, cc);
+                }
+            );
+
+
+            cell.addEventListener(
+                'contextmenu',
+                function(event) {
+
+                    event.preventDefault();
+                    event.stopPropagation();
+
+                    toggleFlag(
+                        parseInt(this.dataset.r),
+                        parseInt(this.dataset.c)
+                    );
+                }
+            );
+
+
+            let longPressTimer = null;
+
+            cell.addEventListener(
+                'touchstart',
+                function() {
+
+                    longPressTimer =
+                        setTimeout(() => {
+
+                            toggleFlag(
+                                parseInt(this.dataset.r),
+                                parseInt(this.dataset.c)
+                            );
+
+                            if (navigator.vibrate) {
+                                navigator.vibrate(20);
+                            }
+
+                        }, 500);
+                },
+                { passive: true }
+            );
+
+
+            cell.addEventListener(
+                'touchend',
+                function() {
+                    clearTimeout(longPressTimer);
+                }
+            );
+
+
+            cell.addEventListener(
+                'touchmove',
+                function() {
+                    clearTimeout(longPressTimer);
+                }
+            );
+
+
+            grid.appendChild(cell);
+        }
+    }
+}
+
+
+function toggleFlag(r, c) {
+
+    if (msGameOver) return;
+
+    if (msRevealed[r][c]) return;
+
+    msFlagged[r][c] =
+        !msFlagged[r][c];
+
+    renderMinesweeper();
+
+    updateFlagCount();
+}
+
+
+function updateFlagCount() {
+
+    let count = 0;
+
+    for (let r = 0; r < msRows; r++) {
+
+        for (let c = 0; c < msCols; c++) {
+
+            if (msFlagged[r][c]) {
+                count++;
+            }
+        }
+    }
+
+    document.getElementById('msFlags')
+        .textContent = count;
+}
+
+
+function revealCell(r, c) {
+
+    if (msRevealed[r][c]) return;
+
+    if (msFlagged[r][c]) return;
+
+    if (msGameOver) return;
+
+
+    if (msFirstClick) {
+
+        placeMines(r, c);
+
+        msFirstClick = false;
+    }
+
+
+    if (msBoard[r][c] === -1) {
+
+        msRevealed[r][c] = true;
+
+        msGameOver = true;
+
+        for (let rr = 0; rr < msRows; rr++) {
+
+            for (let cc = 0; cc < msCols; cc++) {
+
+                if (msBoard[rr][cc] === -1) {
+
+                    msRevealed[rr][cc] = true;
                 }
             }
-            if (total - revealed === msMines) {
-                showToastCustom('🎉 恭喜你赢了！扫雷大师！');
-                msGameOver = true;
-            }
         }
 
-        // ======================== 留言板（LeanCloud） ========================
-        const APP_ID = '';
-        const APP_KEY = '';
-        let isLeanCloudReady = false;
+        renderMinesweeper();
 
-        async function initLeanCloud() {
-            if (!APP_ID || !APP_KEY) {
-                document.getElementById('msgList').innerHTML =
-                    '<div style="text-align:center;color:#8a9aa8;padding:16px;font-size:13px;">⚠️ 请先配置 LeanCloud<br>填入 APP_ID 和 APP_KEY</div>';
-                return;
-            }
-            try {
-                const res = await fetch('https://app-router.leancloud.cn/2/route?appId=' + APP_ID);
-                if (!res.ok) throw new Error('网络异常');
-                isLeanCloudReady = true;
-                loadMessages();
-            } catch (e) {
-                document.getElementById('msgList').innerHTML =
-                    '<div style="text-align:center;color:#8a9aa8;padding:16px;font-size:13px;">⚠️ LeanCloud 连接失败<br>错误: ' +
-                    e.message + '</div>';
+        showToastCustom(
+            '💥 踩雷了！游戏结束'
+        );
+
+        return;
+    }
+
+
+    msRevealed[r][c] = true;
+
+
+    if (msBoard[r][c] === 0) {
+
+        for (let dr = -1; dr <= 1; dr++) {
+
+            for (let dc = -1; dc <= 1; dc++) {
+
+                const nr = r + dr;
+                const nc = c + dc;
+
+                if (
+                    nr >= 0 &&
+                    nr < msRows &&
+                    nc >= 0 &&
+                    nc < msCols &&
+                    !msRevealed[nr][nc] &&
+                    !msFlagged[nr][nc]
+                ) {
+
+                    revealCell(nr, nc);
+                }
             }
         }
+    }
 
-        async function loadMessages() {
-            if (!isLeanCloudReady) return;
-            try {
-                const res = await fetch('https://' + APP_ID + '.api.lncldglobal.com/1/classes/Messages?order=-createdAt&limit=30', {
+
+    renderMinesweeper();
+
+    checkWin();
+}
+
+
+function checkWin() {
+
+    let total =
+        msRows * msCols;
+
+    let revealed = 0;
+
+    for (let r = 0; r < msRows; r++) {
+
+        for (let c = 0; c < msCols; c++) {
+
+            if (msRevealed[r][c]) {
+                revealed++;
+            }
+        }
+    }
+
+
+    if (total - revealed === msMines) {
+
+        msGameOver = true;
+
+        showToastCustom(
+            '🎉 恭喜你赢了！扫雷大师！'
+        );
+    }
+}
+
+
+/* =========================================================
+   留言板 - LeanCloud
+========================================================= */
+
+/*
+ * 重要：
+ *
+ * 这里不要填写 Master Key。
+ *
+ * 只使用 LeanCloud 的客户端 App ID / App Key。
+ *
+ * 如果你的留言板需要真正上线：
+ *
+ * const APP_ID = '你的 App ID';
+ * const APP_KEY = '你的 App Key';
+ *
+ */
+
+const APP_ID = '';
+const APP_KEY = '';
+
+let isLeanCloudReady = false;
+
+
+async function initLeanCloud() {
+
+    if (!APP_ID || !APP_KEY) {
+
+        document.getElementById('msgList').innerHTML =
+            `
+            <div style="
+                text-align:center;
+                color:#8a9aa8;
+                padding:16px;
+                font-size:13px;">
+                💬 留言板暂未配置<br>
+                请配置 LeanCloud App ID / App Key
+            </div>
+            `;
+
+        return;
+    }
+
+
+    try {
+
+        const res =
+            await fetch(
+                'https://app-router.leancloud.cn/2/route?appId=' +
+                encodeURIComponent(APP_ID)
+            );
+
+        if (!res.ok) {
+            throw new Error('网络异常');
+        }
+
+        isLeanCloudReady = true;
+
+        loadMessages();
+
+    } catch (error) {
+
+        document.getElementById('msgList').innerHTML =
+            `
+            <div style="
+                text-align:center;
+                color:#8a9aa8;
+                padding:16px;
+                font-size:13px;">
+                ⚠️ LeanCloud 连接失败<br>
+                请稍后重试
+            </div>
+            `;
+    }
+}
+
+
+async function loadMessages() {
+
+    if (!isLeanCloudReady) {
+        return;
+    }
+
+
+    try {
+
+        const res =
+            await fetch(
+                'https://' +
+                APP_ID +
+                '.api.lncldglobal.com/1/classes/Messages?order=-createdAt&limit=30',
+                {
                     headers: {
                         'X-LC-Id': APP_ID,
-                        'X-LC-Key': APP_KEY + ',master'
+                        'X-LC-Key': APP_KEY
                     }
-                });
-                if (!res.ok) throw new Error('加载失败');
-                const data = await res.json();
-                const list = document.getElementById('msgList');
-                if (data.results && data.results.length > 0) {
-                    list.innerHTML = data.results.map(msg =>
-                        `<div class="msg-item">
-                            <span class="nick">${escapeHtml(msg.nickname || '匿名')}</span>
-                            ${escapeHtml(msg.content || '')}
-                            <span class="time">${msg.createdAt ? new Date(msg.createdAt).toLocaleString('zh-CN', {month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit'}) : ''}</span>
-                        </div>`
-                    ).join('');
-                } else {
-                    list.innerHTML =
-                        '<div style="text-align:center;color:#8a9aa8;padding:16px;font-size:13px;">💬 还没有留言，快来抢沙发！</div>';
                 }
-            } catch (e) {
-                document.getElementById('msgList').innerHTML =
-                    '<div style="text-align:center;color:#8a9aa8;padding:16px;font-size:13px;">⚠️ 加载留言失败: ' + e.message +
-                    '</div>';
-            }
+            );
+
+
+        if (!res.ok) {
+            throw new Error('加载失败');
         }
 
-        async function sendMessage() {
-            const nick = document.getElementById('msgNick').value.trim() || '匿名';
-            const content = document.getElementById('msgContent').value.trim();
-            if (!content) {
-                showToastCustom('✍️ 写点什么再发送吧！');
-                return;
-            }
-            if (!isLeanCloudReady) {
-                showToastCustom('⚠️ 留言服务未就绪，请检查配置');
-                return;
-            }
-            try {
-                const res = await fetch('https://' + APP_ID + '.api.lncldglobal.com/1/classes/Messages', {
+
+        const data =
+            await res.json();
+
+        const list =
+            document.getElementById('msgList');
+
+
+        if (
+            data.results &&
+            data.results.length > 0
+        ) {
+
+            list.innerHTML =
+                data.results.map(msg => {
+
+                    const nickname =
+                        escapeHtml(
+                            msg.nickname || '匿名'
+                        );
+
+                    const content =
+                        escapeHtml(
+                            msg.content || ''
+                        );
+
+                    const time =
+                        msg.createdAt
+                            ? new Date(
+                                msg.createdAt
+                            ).toLocaleString(
+                                'zh-CN',
+                                {
+                                    month: '2-digit',
+                                    day: '2-digit',
+                                    hour: '2-digit',
+                                    minute: '2-digit'
+                                }
+                            )
+                            : '';
+
+                    return `
+                        <div class="msg-item">
+
+                            <span class="nick">
+                                ${nickname}
+                            </span>
+
+                            ${content}
+
+                            <span class="time">
+                                ${time}
+                            </span>
+
+                        </div>
+                    `;
+                }).join('');
+
+        } else {
+
+            list.innerHTML =
+                `
+                <div style="
+                    text-align:center;
+                    color:#8a9aa8;
+                    padding:16px;
+                    font-size:13px;">
+                    💬 还没有留言，快来抢沙发！
+                </div>
+                `;
+        }
+
+    } catch (error) {
+
+        document.getElementById('msgList').innerHTML =
+            `
+            <div style="
+                text-align:center;
+                color:#8a9aa8;
+                padding:16px;
+                font-size:13px;">
+                ⚠️ 加载留言失败
+            </div>
+            `;
+    }
+}
+
+
+async function sendMessage() {
+
+    const sendBtn =
+        document.querySelector(
+            '.msg-input-area .btn-send'
+        );
+
+    if (
+        sendBtn &&
+        sendBtn.disabled
+    ) {
+        return;
+    }
+
+
+    const nick =
+        document.getElementById('msgNick')
+            .value
+            .trim()
+        || '匿名';
+
+
+    const content =
+        document.getElementById('msgContent')
+            .value
+            .trim();
+
+
+    if (!content) {
+
+        showToastCustom(
+            '✍️ 写点什么再发送吧！'
+        );
+
+        return;
+    }
+
+
+    if (!isLeanCloudReady) {
+
+        showToastCustom(
+            '⚠️ 留言服务未就绪，请检查配置'
+        );
+
+        return;
+    }
+
+
+    try {
+
+        if (sendBtn) {
+
+            sendBtn.disabled = true;
+
+            sendBtn.textContent =
+                '发送中…';
+        }
+
+
+        const res =
+            await fetch(
+                'https://' +
+                APP_ID +
+                '.api.lncldglobal.com/1/classes/Messages',
+                {
                     method: 'POST',
+
                     headers: {
                         'X-LC-Id': APP_ID,
-                        'X-LC-Key': APP_KEY + ',master',
+                        'X-LC-Key': APP_KEY,
                         'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify({ nickname: nick, content: content })
-                });
-                if (!res.ok) throw new Error('发送失败');
-                document.getElementById('msgContent').value = '';
-                showToastCustom('✅ 留言发送成功！');
-                loadMessages();
-            } catch (e) {
-                showToastCustom('❌ 发送失败: ' + e.message);
+
+                    body: JSON.stringify({
+                        nickname: nick,
+                        content: content
+                    })
+                }
+            );
+
+
+        if (!res.ok) {
+            throw new Error('发送失败');
+        }
+
+
+        document.getElementById('msgContent')
+            .value = '';
+
+        showToastCustom(
+            '✅ 留言发送成功！'
+        );
+
+        loadMessages();
+
+
+    } catch (error) {
+
+        showToastCustom(
+            '❌ 发送失败，请稍后再试'
+        );
+
+
+    } finally {
+
+        if (sendBtn) {
+
+            sendBtn.disabled = false;
+
+            sendBtn.innerHTML =
+                '<i class="fas fa-paper-plane"></i> 发送';
+        }
+    }
+}
+
+
+/* =========================================================
+   XSS 防护
+========================================================= */
+
+function escapeHtml(text) {
+
+    const div =
+        document.createElement('div');
+
+    div.textContent = String(text);
+
+    return div.innerHTML;
+}
+
+
+/* =========================================================
+   键盘 ESC
+========================================================= */
+
+document.addEventListener(
+    'keydown',
+    event => {
+
+        if (event.key !== 'Escape') {
+            return;
+        }
+
+
+        const qixi =
+            document.getElementById('qixiOverlay');
+
+        if (
+            qixi &&
+            qixi.classList.contains('active')
+        ) {
+
+            closeQixi();
+
+            return;
+        }
+
+
+        const games = [
+            ['reaction', 'reactionGame'],
+            ['2048', 'game2048'],
+            ['minesweeper', 'minesweeper']
+        ];
+
+
+        for (const [type, id] of games) {
+
+            const element =
+                document.getElementById(id);
+
+            if (
+                element &&
+                element.classList.contains('active')
+            ) {
+
+                closeGame(type);
+
+                break;
             }
         }
 
-        function escapeHtml(text) {
-            const div = document.createElement('div');
-            div.textContent = text;
-            return div.innerHTML;
-        }
+    }
+);
 
-        // ======================== 初始化 ========================
-        document.addEventListener('DOMContentLoaded', function() {
-            initLeanCloud();
-            showQixiPopup();
-        });
 
-        console.log('%c 🚗 GG车队 %c 安卓直角设计风格已上线！', 'background:#1a73e8;color:#fff;font-size:16px;padding:6px;border-radius:0;', 'background:#fff;color:#1a73e8;padding:6px;border-radius:0;');
-        console.log('%c 💕 8.19-8.20 @群主 surhrkc 免费领七夕头衔！', 'color:#e53935;font-size:14px;font-weight:700;');
-        console.log('%c ☁️ 点击云朵5次→云原神 | 页脚5次→彩蛋', 'color:#1a73e8;font-size:13px;');
-    </script>
+/* =========================================================
+   页面初始化
+========================================================= */
+
+document.addEventListener(
+    'DOMContentLoaded',
+    function() {
+
+        initLeanCloud();
+
+        /*
+         * 当前日期已经超过原七夕活动日期，
+         * 因此不再自动弹出过期活动。
+         */
+
+        showQixiPopup();
+
+        console.log(
+            '%c🚗 GG车队%c 已加载',
+            'background:#1a73e8;color:#fff;padding:6px;font-size:15px;',
+            'color:#1a73e8;padding:6px;font-size:13px;'
+        );
+
+    }
+);
+
+</script>
+
 </body>
 </html>
